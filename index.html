@@ -937,8 +937,9 @@ footer.site{background:#0c0c0c;border-top-color:rgba(255,255,255,.08)}
           <div class="line"><span>Rate per page</span><span id="rRate">₹0.00</span></div>
           <div class="line"><span>Binding</span><span id="rBinding">₹0</span></div>
           <div class="total"><span>Total</span><span class="amt" id="rTotal">₹0</span></div>
-          <a class="btn" id="waBtn" href="#" target="_blank" rel="noopener">Send order on WhatsApp</a>
-          <div class="note">Tap the button to open WhatsApp with your order details filled in — attach the file there before sending.</div>
+          <button class="btn" id="waBtn" type="button">Send order + file on WhatsApp</button>
+          <div class="note" id="waNote">On supported phones, WhatsApp will open with the selected file attached. On desktop/unsupported browsers, WhatsApp opens with the order text and you can attach the file manually.</div>
+          <div id="waStatus" role="status" aria-live="polite" style="margin-top:10px;font-size:.9rem;"></div>
         </aside>
       </div>
     </div>
@@ -1198,12 +1199,54 @@ footer.site{background:#0c0c0c;border-top-color:rgba(255,255,255,.08)}
       '- Binding: ' + binding,
       '- Estimated total: ' + money(total)
     ].join('\n');
-    document.getElementById('waBtn').href = 'https://wa.me/919080985580?text=' + encodeURIComponent(msg);
+    window.__skynetOrderMessage = msg;
   }
 
   [pagesEl, copiesEl, paperEl, bindingEl, serviceEl].filter(Boolean).forEach(function(el) {
     el.addEventListener('input', recalc);
     el.addEventListener('change', recalc);
+  });
+
+  const waBtn = document.getElementById('waBtn');
+  const waStatus = document.getElementById('waStatus');
+
+  waBtn.addEventListener('click', async function() {
+    const file = fileInput.files && fileInput.files[0];
+    const msg = window.__skynetOrderMessage || 'New print order from the website.';
+
+    if (!file) {
+      waStatus.textContent = 'Please choose your file first.';
+      fileInput.focus();
+      return;
+    }
+
+    waStatus.textContent = 'Opening WhatsApp…';
+
+    // A normal wa.me link cannot carry a file. The Web Share API can hand
+    // the real File object to WhatsApp on supported phones/browsers.
+    try {
+      if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          title: 'Skynet Computers Print Order',
+          text: msg,
+          files: [file]
+        });
+        waStatus.textContent = '✓ Share sheet opened. Select WhatsApp and send the order.';
+        return;
+      }
+    } catch (err) {
+      // User may have closed the share sheet; fall back to WhatsApp text chat.
+      if (err && err.name === 'AbortError') {
+        waStatus.textContent = 'Share cancelled.';
+        return;
+      }
+    }
+
+    // Desktop/fallback: open WhatsApp with the order details.
+    // The browser cannot attach a local file through a wa.me URL.
+    const waUrl = 'https://wa.me/919080985580?text=' + encodeURIComponent(msg);
+    window.open(waUrl, '_blank', 'noopener');
+    waStatus.textContent = 'WhatsApp opened with the order details. Please attach "' + file.name + '" and send it.';
   });
 
   recalc();
