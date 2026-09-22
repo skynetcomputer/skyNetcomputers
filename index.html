@@ -1239,70 +1239,97 @@ footer.site{background:#0c0c0c;border-top-color:rgba(255,255,255,.08)}
 
 
 <script>
-(function () {
-  const ENDPOINT = window.SKynetWhatsAppEndpoint || "https://YOUR-VERCEL-PROJECT.vercel.app/api/order";
-  const btn = document.getElementById("waBtn");
-  const status = document.getElementById("waStatus");
-  const fileInput = document.getElementById("fileInput");
+(() => {
+  const btn = document.getElementById('waBtn');
+  const fileInput = document.getElementById('fileInput');
+  const status = document.getElementById('waStatus');
+
+  // IMPORTANT: replace this after deploying the backend.
+  // Example: https://your-project.vercel.app/api/order
+  const API_URL = 'https://YOUR-VERCEL-PROJECT.vercel.app/api/order';
 
   if (!btn || !fileInput) return;
 
-  btn.addEventListener("click", async function (e) {
+  function orderDetails() {
+    const form = fileInput.closest('form') || document;
+    const parts = ['NEW PRINT ORDER'];
+    const seen = new Set();
+
+    // Prefer readable labels + values from form controls.
+    form.querySelectorAll('input, select, textarea').forEach(el => {
+      if (el === fileInput || !el.name && !el.id) return;
+      if (el.type === 'submit' || el.type === 'button' || el.type === 'file') return;
+      if (el.type === 'radio' && !el.checked) return;
+      if (el.type === 'checkbox' && !el.checked) return;
+
+      let value = (el.value || '').trim();
+      if (!value) return;
+
+      let label = '';
+      if (el.id) {
+        const l = form.querySelector('label[for="' + CSS.escape(el.id) + '"]');
+        if (l) label = l.textContent.trim();
+      }
+      if (!label && el.parentElement) {
+        const text = el.parentElement.innerText.trim().replace(/\s+/g, ' ');
+        if (text && text.length < 80) label = text;
+      }
+      if (!label) label = el.name || el.id;
+
+      // Avoid dumping implementation names where a label is available.
+      label = label.replace(/\s+/g, ' ').replace(/[:：]\s*$/, '');
+      const key = label + '|' + value;
+      if (seen.has(key)) return;
+      seen.add(key);
+      parts.push(label + ': ' + value);
+    });
+
+    return parts.join('\n');
+  }
+
+  btn.addEventListener('click', async (e) => {
     e.preventDefault();
 
     const file = fileInput.files && fileInput.files[0];
     if (!file) {
-      if (status) status.textContent = "Please choose your file first.";
+      status.textContent = 'Please select your file first.';
       return;
     }
 
-    const maxBytes = 4 * 1024 * 1024;
-    if (file.size > maxBytes) {
-      if (status) status.textContent = "File is too large. Please choose a file under 4 MB.";
+    // Keep the current Vercel-function version safe for the request-size limit.
+    if (file.size > 4 * 1024 * 1024) {
+      status.textContent = 'Please choose a file smaller than 4 MB.';
       return;
     }
 
-    // Collect current order fields without changing the existing page.
-    const get = (id) => {
-      const el = document.getElementById(id);
-      return el ? (el.value || el.textContent || "").trim() : "";
-    };
+    if (API_URL.includes('YOUR-VERCEL-PROJECT')) {
+      status.textContent = 'The WhatsApp server is not connected yet. Set the API URL in this HTML file.';
+      return;
+    }
 
-    const message = [
-      "New Print Order",
-      "File: " + file.name,
-      get("service") ? "Service: " + get("service") : "",
-      get("pages") ? "Pages: " + get("pages") : "",
-      get("copies") ? "Copies: " + get("copies") : "",
-      get("paper") ? "Paper: " + get("paper") : "",
-      get("colour") ? "Colour: " + get("colour") : "",
-      get("sides") ? "Sides: " + get("sides") : "",
-      get("binding") ? "Binding: " + get("binding") : ""
-    ].filter(Boolean).join("\n");
-
-    const form = new FormData();
-    form.append("file", file, file.name);
-    form.append("message", message);
+    const data = new FormData();
+    data.append('file', file, file.name);
+    data.append('message', orderDetails());
 
     btn.disabled = true;
-    if (status) status.textContent = "Sending file and order to WhatsApp...";
+    status.textContent = 'Uploading file and sending to WhatsApp…';
 
     try {
-      const response = await fetch(ENDPOINT, {
-        method: "POST",
-        body: form
+      const r = await fetch(API_URL, {
+        method: 'POST',
+        body: data
       });
 
-      const data = await response.json().catch(() => ({}));
-      if (!response.ok || !data.ok) {
-        throw new Error(data.error || "Unable to send the order.");
+      const result = await r.json().catch(() => ({}));
+
+      if (!r.ok || !result.ok) {
+        throw new Error(result.error || 'WhatsApp sending failed.');
       }
 
-      if (status) status.textContent = "✓ Order and actual file sent successfully to WhatsApp.";
+      status.textContent = '✓ Sent successfully. The actual file was sent to WhatsApp.';
     } catch (err) {
       console.error(err);
-      if (status) status.textContent =
-        "Could not send automatically. Please check the WhatsApp backend URL/setup.";
+      status.textContent = '✕ File was not sent. Please check the WhatsApp API/server setup.';
     } finally {
       btn.disabled = false;
     }
