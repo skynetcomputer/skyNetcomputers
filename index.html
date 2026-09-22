@@ -856,7 +856,19 @@ footer.site{background:#0c0c0c;border-top-color:rgba(255,255,255,.08)}
       </div>
       <div class="order-grid">
         <div>
-
+          <div class="field">
+            <label for="fileInput">Your file</label>
+            <label class="dropzone" for="fileInput" id="dropzone">
+              <span class="dz-icon">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 11V2M8 2L4.5 5.5M8 2L11.5 5.5" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.5 11V13.5H13.5V11" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              <span class="dz-text">
+                <strong id="dzLabel">Choose a file to attach</strong>
+                <span>PDF, DOC, or JPG — we'll confirm pages with you</span>
+              </span>
+            </label>
+            <input type="file" id="fileInput">
+          </div>
 
           <div class="row2">
             <div class="field">
@@ -1101,6 +1113,8 @@ footer.site{background:#0c0c0c;border-top-color:rgba(255,255,255,.08)}
   const paperEl = document.getElementById('paperSize');
   const bindingEl = document.getElementById('binding');
   const serviceEl = document.getElementById('serviceType');
+  const fileInput = document.getElementById('fileInput');
+  const dzLabel = document.getElementById('dzLabel');
 
   const rates = {
     a4:    { bw: 2,  color: 8 },
@@ -1131,6 +1145,14 @@ footer.site{background:#0c0c0c;border-top-color:rgba(255,255,255,.08)}
   }
   wireChoiceGroup('colourGroup');
   wireChoiceGroup('sidesGroup');
+
+  fileInput.addEventListener('change', function() {
+    if (fileInput.files && fileInput.files[0]) {
+      dzLabel.textContent = fileInput.files[0].name;
+    } else {
+      dzLabel.textContent = 'Choose a file to attach';
+    }
+  });
 
   function money(n) {
     return '₹' + n.toFixed(2).replace(/\.00$/, '');
@@ -1166,7 +1188,7 @@ footer.site{background:#0c0c0c;border-top-color:rgba(255,255,255,.08)}
 
     const sides = getSides();
     const serviceName = serviceEl ? serviceEl.options[serviceEl.selectedIndex].text : 'Document Printing';
-    const fileName = 'No attachment';
+    const fileName = (fileInput.files && fileInput.files[0]) ? fileInput.files[0].name : 'not attached yet';
     const msg = [
       'New print order from the website:',
       '- Service: ' + serviceName,
