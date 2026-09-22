@@ -937,9 +937,9 @@ footer.site{background:#0c0c0c;border-top-color:rgba(255,255,255,.08)}
           <div class="line"><span>Rate per page</span><span id="rRate">₹0.00</span></div>
           <div class="line"><span>Binding</span><span id="rBinding">₹0</span></div>
           <div class="total"><span>Total</span><span class="amt" id="rTotal">₹0</span></div>
-          <button class="btn" id="waBtn" type="button">Send order + file on WhatsApp</button>
-          <div class="note" id="waNote">On supported phones, WhatsApp will open with the selected file attached. On desktop/unsupported browsers, WhatsApp opens with the order text and you can attach the file manually.</div>
-          <div id="waStatus" role="status" aria-live="polite" style="margin-top:10px;font-size:.9rem;"></div>
+          <button class="btn" id="waBtn" type="button">Send order on WhatsApp</button>
+<div id="waStatus" role="status" aria-live="polite" style="margin-top:10px;font-size:.9rem;"></div>
+          <div class="note">Tap the button to open WhatsApp with your order details filled in — attach the file there before sending.</div>
         </aside>
       </div>
     </div>
@@ -1199,54 +1199,12 @@ footer.site{background:#0c0c0c;border-top-color:rgba(255,255,255,.08)}
       '- Binding: ' + binding,
       '- Estimated total: ' + money(total)
     ].join('\n');
-    window.__skynetOrderMessage = msg;
+    document.getElementById('waBtn').href = 'https://wa.me/919080985580?text=' + encodeURIComponent(msg);
   }
 
   [pagesEl, copiesEl, paperEl, bindingEl, serviceEl].filter(Boolean).forEach(function(el) {
     el.addEventListener('input', recalc);
     el.addEventListener('change', recalc);
-  });
-
-  const waBtn = document.getElementById('waBtn');
-  const waStatus = document.getElementById('waStatus');
-
-  waBtn.addEventListener('click', async function() {
-    const file = fileInput.files && fileInput.files[0];
-    const msg = window.__skynetOrderMessage || 'New print order from the website.';
-
-    if (!file) {
-      waStatus.textContent = 'Please choose your file first.';
-      fileInput.focus();
-      return;
-    }
-
-    waStatus.textContent = 'Opening WhatsApp…';
-
-    // A normal wa.me link cannot carry a file. The Web Share API can hand
-    // the real File object to WhatsApp on supported phones/browsers.
-    try {
-      if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
-        await navigator.share({
-          title: 'Skynet Computers Print Order',
-          text: msg,
-          files: [file]
-        });
-        waStatus.textContent = '✓ Share sheet opened. Select WhatsApp and send the order.';
-        return;
-      }
-    } catch (err) {
-      // User may have closed the share sheet; fall back to WhatsApp text chat.
-      if (err && err.name === 'AbortError') {
-        waStatus.textContent = 'Share cancelled.';
-        return;
-      }
-    }
-
-    // Desktop/fallback: open WhatsApp with the order details.
-    // The browser cannot attach a local file through a wa.me URL.
-    const waUrl = 'https://wa.me/919080985580?text=' + encodeURIComponent(msg);
-    window.open(waUrl, '_blank', 'noopener');
-    waStatus.textContent = 'WhatsApp opened with the order details. Please attach "' + file.name + '" and send it.';
   });
 
   recalc();
@@ -1276,6 +1234,79 @@ footer.site{background:#0c0c0c;border-top-color:rgba(255,255,255,.08)}
   } else {
     document.querySelectorAll('.step, .tier, .testi-grid blockquote').forEach(function(el) { el.classList.add('in-view'); });
   }
+})();
+</script>
+
+
+<script>
+(function () {
+  const ENDPOINT = window.SKynetWhatsAppEndpoint || "https://YOUR-VERCEL-PROJECT.vercel.app/api/order";
+  const btn = document.getElementById("waBtn");
+  const status = document.getElementById("waStatus");
+  const fileInput = document.getElementById("fileInput");
+
+  if (!btn || !fileInput) return;
+
+  btn.addEventListener("click", async function (e) {
+    e.preventDefault();
+
+    const file = fileInput.files && fileInput.files[0];
+    if (!file) {
+      if (status) status.textContent = "Please choose your file first.";
+      return;
+    }
+
+    const maxBytes = 4 * 1024 * 1024;
+    if (file.size > maxBytes) {
+      if (status) status.textContent = "File is too large. Please choose a file under 4 MB.";
+      return;
+    }
+
+    // Collect current order fields without changing the existing page.
+    const get = (id) => {
+      const el = document.getElementById(id);
+      return el ? (el.value || el.textContent || "").trim() : "";
+    };
+
+    const message = [
+      "New Print Order",
+      "File: " + file.name,
+      get("service") ? "Service: " + get("service") : "",
+      get("pages") ? "Pages: " + get("pages") : "",
+      get("copies") ? "Copies: " + get("copies") : "",
+      get("paper") ? "Paper: " + get("paper") : "",
+      get("colour") ? "Colour: " + get("colour") : "",
+      get("sides") ? "Sides: " + get("sides") : "",
+      get("binding") ? "Binding: " + get("binding") : ""
+    ].filter(Boolean).join("\n");
+
+    const form = new FormData();
+    form.append("file", file, file.name);
+    form.append("message", message);
+
+    btn.disabled = true;
+    if (status) status.textContent = "Sending file and order to WhatsApp...";
+
+    try {
+      const response = await fetch(ENDPOINT, {
+        method: "POST",
+        body: form
+      });
+
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok || !data.ok) {
+        throw new Error(data.error || "Unable to send the order.");
+      }
+
+      if (status) status.textContent = "✓ Order and actual file sent successfully to WhatsApp.";
+    } catch (err) {
+      console.error(err);
+      if (status) status.textContent =
+        "Could not send automatically. Please check the WhatsApp backend URL/setup.";
+    } finally {
+      btn.disabled = false;
+    }
+  });
 })();
 </script>
 
