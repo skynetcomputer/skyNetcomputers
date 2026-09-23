@@ -103,7 +103,7 @@ footer{background:#020617;color:#94a3b8;text-align:center;padding:32px 15px}.foo
       <h1>SkyNet E-Sevai Maiyam</h1>
       <h2>உங்கள் அரசு சேவைகள் அனைத்தும் ஒரே இடத்தில்</h2>
       <p>Government and digital services made simple, convenient and accessible. Get assistance for various online government services from one place.</p>
-      <div class="buttons"><a class="btn btn-white" href="#services">View Services</a><a class="btn btn-green" href="https://wa.me/918973310128" target="_blank">WhatsApp Us</a></div>
+      <div class="buttons"><a class="btn btn-white" href="#services">சேவைகளை காண்க</a><a class="btn btn-green" href="https://wa.me/918973310128" target="_blank">WhatsApp Us</a></div>
     </div>
     <div class="visual"><div class="hero-slider" id="heroSlider"><div class="dots" id="heroDots"></div></div></div>
   </div>
@@ -162,18 +162,18 @@ footer{background:#020617;color:#94a3b8;text-align:center;padding:32px 15px}.foo
 <section id="servicePage" aria-label="Service details">
   <div class="container">
     <div class="service-page-head">
-      <button class="back-btn" onclick="showAllServices()">← Back to Services</button>
+      <button class="back-btn" onclick="showAllServices()">← சேவைகளுக்கு திரும்பு</button>
       <a class="whatsapp" href="https://wa.me/918973310128" target="_blank">💬 WhatsApp</a>
     </div>
     <div class="service-page-title">
       <div class="service-page-icon" id="detailIcon">🪪</div>
       <div>
         <h1 id="detailTitle">Service</h1>
-        <p id="detailSubtitle">Choose a service below</p>
+        <p id="detailSubtitle">கீழே ஒரு சேவையை தேர்ந்தெடுக்கவும்</p>
       </div>
     </div>
     <div class="category-note">
-      Select the service you need. For document requirements, fees and current processing details, contact SkyNet E-Sevai Maiyam on WhatsApp before submitting sensitive documents.
+      உங்களுக்கு தேவையான சேவையை தேர்ந்தெடுக்கவும். ஆவண தேவைகள், கட்டணம் மற்றும் தற்போதைய செயல்முறை விவரங்களுக்கு, முக்கியமான ஆவணங்களை அனுப்பும் முன் SkyNet E-Sevai Maiyam-ஐ WhatsApp மூலம் தொடர்பு கொள்ளவும்.
     </div>
     <div class="detail-grid" id="detailGrid"></div>
   </div>
@@ -187,171 +187,171 @@ footer{background:#020617;color:#94a3b8;text-align:center;padding:32px 15px}.foo
 <script>
 
 const services=[
-["E-Sevai","Tamil Nadu government e-Sevai services.","🏛️",[
-["Community Certificate","Assistance with online application and document submission."],
-["Income Certificate","Assistance with application and supporting documents."],
-["Nativity / Residence","Application assistance for eligible certificate services."],
-["Other e-Sevai Services","Ask us about the service you need."]
+["E-Sevai","தமிழ்நாடு அரசு இ-சேவை சேவைகள்.","🏛️",[
+["Community Certificate","ஆன்லைன் விண்ணப்பம் மற்றும் ஆவணம் சமர்ப்பிப்பதற்கான உதவி."],
+["Income Certificate","விண்ணப்பம் மற்றும் தேவையான ஆவணங்களுக்கான உதவி."],
+["Nativity / Residence","தகுதியுள்ள சான்றிதழ் சேவைகளுக்கான விண்ணப்ப உதவி."],
+["Other e-Sevai Services","உங்களுக்கு தேவையான சேவையைப் பற்றி எங்களிடம் கேளுங்கள்."]
 ]],
-["Aadhaar","Aadhaar application and update assistance.","🪪",[
-["New Aadhaar Enrolment","Assistance with Aadhaar enrolment process and appointment guidance."],
-["Aadhaar Update","Help with eligible demographic and document update requests."],
-["Mobile Number Update","Guidance for updating Aadhaar-linked mobile details where permitted."],
-["Address Update","Assistance with address update and supporting-document preparation."],
-["Aadhaar Download / Print","Help downloading and printing an Aadhaar document."],
-["Aadhaar Services – Other","Ask us about the specific Aadhaar service you need."]
+["Aadhaar","ஆதார் விண்ணப்பம் மற்றும் திருத்த உதவி.","🪪",[
+["New Aadhaar Enrolment","ஆதார் பதிவு செயல்முறை மற்றும் அப்பாயிண்ட்மென்ட் வழிகாட்டுதலுக்கான உதவி."],
+["Aadhaar Update","தகுதியுள்ள விவர மற்றும் ஆவண திருத்தங்களுக்கான உதவி."],
+["Mobile Number Update","அனுமதிக்கப்பட்ட இடங்களில் ஆதார் இணைந்த மொபைல் எண் திருத்தத்திற்கான வழிகாட்டுதல்."],
+["Address Update","முகவரி திருத்தம் மற்றும் தேவையான ஆவணங்கள் தயாரிப்பதற்கான உதவி."],
+["Aadhaar Download / Print","ஆதார் ஆவணத்தை பதிவிறக்கம் மற்றும் பிரிண்ட் செய்வதற்கான உதவி."],
+["Aadhaar Services – Other","உங்களுக்கு தேவையான குறிப்பிட்ட ஆதார் சேவையைப் பற்றி எங்களிடம் கேளுங்கள்."]
 ]],
-["Vote ID","Voter ID application and correction services.","🗳️",[
-["New Voter Registration","Assistance with new voter registration application."],
-["Correction / Update","Help with eligible voter details correction or update."],
-["Address / Constituency Change","Guidance for shifting voter registration."],
-["Voter ID Download / Status","Help checking application status or accessing available voter documents."]
+["Vote ID","வாக்காளர் அடையாள அட்டை விண்ணப்பம் மற்றும் திருத்த சேவைகள்.","🗳️",[
+["New Voter Registration","புதிய வாக்காளர் பதிவு விண்ணப்பத்திற்கான உதவி."],
+["Correction / Update","தகுதியுள்ள வாக்காளர் விவரங்கள் திருத்தம் அல்லது புதுப்பிப்புக்கான உதவி."],
+["Address / Constituency Change","வாக்காளர் பதிவை மாற்றுவதற்கான வழிகாட்டுதல்."],
+["Voter ID Download / Status","விண்ணப்ப நிலையை சரிபார்க்க அல்லது வாக்காளர் ஆவணங்களை பெறுவதற்கான உதவி."]
 ]],
-["Passport","Passport application assistance.","🛂",[
-["New Passport Application","Application assistance and document preparation guidance."],
-["Passport Renewal","Help with renewal application and appointment preparation."],
-["Re-issue / Changes","Guidance for eligible re-issue or personal-detail changes."],
-["Appointment Assistance","Help with online appointment and application steps."]
+["Passport","பாஸ்போர்ட் விண்ணப்ப உதவி.","🛂",[
+["New Passport Application","விண்ணப்ப உதவி மற்றும் ஆவணம் தயாரிப்பு வழிகாட்டுதல்."],
+["Passport Renewal","புதுப்பிப்பு விண்ணப்பம் மற்றும் அப்பாயிண்ட்மென்ட் தயாரிப்புக்கான உதவி."],
+["Re-issue / Changes","தகுதியுள்ள மறுவழங்கல் அல்லது தனிப்பட்ட விவர மாற்றங்களுக்கான வழிகாட்டுதல்."],
+["Appointment Assistance","ஆன்லைன் அப்பாயிண்ட்மென்ட் மற்றும் விண்ணப்ப படிகளுக்கான உதவி."]
 ]],
-["PAN Card","PAN card application and related services.","💳",[
-["New PAN Application","Assistance with online PAN application."],
-["PAN Correction","Help with eligible name, date-of-birth or other corrections."],
-["PAN Reprint","Assistance with available reprint / duplicate PAN services."],
-["PAN Status","Help checking application status."]
+["PAN Card","பான் கார்டு விண்ணப்பம் மற்றும் தொடர்புடைய சேவைகள்.","💳",[
+["New PAN Application","ஆன்லைன் பான் விண்ணப்பத்திற்கான உதவி."],
+["PAN Correction","தகுதியுள்ள பெயர், பிறந்த தேதி அல்லது பிற திருத்தங்களுக்கான உதவி."],
+["PAN Reprint","மறுபிரிண்ட் / நகல் பான் சேவைகளுக்கான உதவி."],
+["PAN Status","விண்ணப்ப நிலையை சரிபார்க்க உதவி."]
 ]],
-["Employment","Employment registration and assistance.","💼",[
-["New Registration","Assistance with employment registration."],
-["Renewal","Guidance for renewal of an existing employment registration."],
-["Profile Update","Help updating eligible education and personal details."],
-["Certificate / Print","Assistance with available employment records and print services."]
+["Employment","வேலைவாய்ப்பு பதிவு மற்றும் உதவி.","💼",[
+["New Registration","வேலைவாய்ப்பு பதிவுக்கான உதவி."],
+["Renewal","தற்போதுள்ள வேலைவாய்ப்பு பதிவை புதுப்பிப்பதற்கான வழிகாட்டுதல்."],
+["Profile Update","தகுதியுள்ள கல்வி மற்றும் தனிப்பட்ட விவரங்களை புதுப்பிக்க உதவி."],
+["Certificate / Print","வேலைவாய்ப்பு பதிவுகள் மற்றும் பிரிண்ட் சேவைகளுக்கான உதவி."]
 ]],
-["Ration Card","Ration card related services.","📋",[
-["New Smart Card Application","Assistance with new family/ration-card application."],
-["Member Addition","Guidance for adding eligible family members."],
-["Member Deletion","Guidance for eligible member deletion requests."],
-["Address / Family Details Update","Help with eligible corrections and updates."],
-["Smart Card Status / Print","Assistance checking status and available print services."]
+["Ration Card","குடும்ப அட்டை தொடர்பான சேவைகள்.","📋",[
+["New Smart Card Application","புதிய குடும்ப/ரேஷன் அட்டை விண்ணப்பத்திற்கான உதவி."],
+["Member Addition","தகுதியுள்ள குடும்ப உறுப்பினர்களை சேர்ப்பதற்கான வழிகாட்டுதல்."],
+["Member Deletion","தகுதியுள்ள உறுப்பினர் நீக்கம் கோரிக்கைக்கான வழிகாட்டுதல்."],
+["Address / Family Details Update","தகுதியுள்ள திருத்தங்கள் மற்றும் புதுப்பிப்புகளுக்கான உதவி."],
+["Smart Card Status / Print","நிலையை சரிபார்க்க மற்றும் பிரிண்ட் சேவைகளுக்கான உதவி."]
 ]],
-["Education","Education and student related services.","🎓",[
-["Scholarship Assistance","Help with online scholarship applications and document preparation."],
-["Student Certificate Services","Assistance with available education certificate applications."],
-["Online Admission Assistance","Guidance for eligible online admission processes."],
-["Exam / Application Forms","Help completing online education-related forms."]
+["Education","கல்வி மற்றும் மாணவர் தொடர்பான சேவைகள்.","🎓",[
+["Scholarship Assistance","ஆன்லைன் ஸ்காலர்ஷிப் விண்ணப்பங்கள் மற்றும் ஆவணம் தயாரிப்புக்கான உதவி."],
+["Student Certificate Services","கல்வி சான்றிதழ் விண்ணப்பங்களுக்கான உதவி."],
+["Online Admission Assistance","தகுதியுள்ள ஆன்லைன் சேர்க்கை செயல்முறைகளுக்கான வழிகாட்டுதல்."],
+["Exam / Application Forms","ஆன்லைன் கல்வி தொடர்பான படிவங்களை பூர்த்தி செய்ய உதவி."]
 ]],
-["EPFO","EPFO and PF related services.","🏦",[
-["UAN Assistance","Help with UAN-related online services."],
-["PF Claim Assistance","Guidance for online PF claim submission."],
-["KYC Update Assistance","Help preparing and submitting eligible KYC updates."],
-["PF Passbook / Status","Assistance accessing available PF records and status."]
+["EPFO","இபிஎஃப்ஓ மற்றும் பிஎஃப் தொடர்பான சேவைகள்.","🏦",[
+["UAN Assistance","யூஏஎன் தொடர்பான ஆன்லைன் சேவைகளுக்கான உதவி."],
+["PF Claim Assistance","ஆன்லைன் பிஎஃப் கோரிக்கை சமர்ப்பிப்பதற்கான வழிகாட்டுதல்."],
+["KYC Update Assistance","தகுதியுள்ள கேஒய்சி புதுப்பிப்புகளை தயாரிக்க மற்றும் சமர்ப்பிக்க உதவி."],
+["PF Passbook / Status","பிஎஃப் பதிவுகள் மற்றும் நிலையை பெற உதவி."]
 ]],
-["Booking","Online booking and appointment assistance.","📅",[
-["Government Appointment","Help booking available government appointments."],
-["Service Centre Appointment","Assistance with appointment scheduling."],
-["Online Ticket / Booking","Help with supported online booking services."],
-["Status / Cancellation","Guidance for available booking status or cancellation options."]
+["Booking","ஆன்லைன் முன்பதிவு மற்றும் அப்பாயிண்ட்மென்ட் உதவி.","📅",[
+["Government Appointment","அரசு அப்பாயிண்ட்மென்ட் முன்பதிவு செய்ய உதவி."],
+["Service Centre Appointment","அப்பாயிண்ட்மென்ட் திட்டமிடலுக்கான உதவி."],
+["Online Ticket / Booking","ஆதரிக்கப்படும் ஆன்லைன் முன்பதிவு சேவைகளுக்கான உதவி."],
+["Status / Cancellation","முன்பதிவு நிலை அல்லது ரத்து விருப்பங்களுக்கான வழிகாட்டுதல்."]
 ]],
-["Payments","Digital payment and bill-payment assistance.","💰",[
-["EB Bill Payment","Assistance with electricity bill payment."],
-["Mobile / DTH Recharge","Help with supported recharge services."],
-["Government Fee Payment","Guidance for eligible online government fee payments."],
-["Payment Receipt / Status","Help checking available payment receipts or status."]
+["Payments","டிஜிட்டல் பணம் செலுத்துதல் மற்றும் பில் பணம் செலுத்துதல் உதவி.","💰",[
+["EB Bill Payment","மின்சார பில் பணம் செலுத்துவதற்கான உதவி."],
+["Mobile / DTH Recharge","ஆதரிக்கப்படும் ரீசார்ஜ் சேவைகளுக்கான உதவி."],
+["Government Fee Payment","தகுதியுள்ள ஆன்லைன் அரசு கட்டணம் செலுத்துதலுக்கான வழிகாட்டுதல்."],
+["Payment Receipt / Status","பணம் செலுத்திய ரசீது அல்லது நிலையை சரிபார்க்க உதவி."]
 ]],
-["PVC ID Card","PVC ID card printing and related assistance.","🪪",[
-["PVC ID Card Design","Assistance preparing a PVC ID card design."],
-["PVC Card Printing","PVC card printing assistance."],
-["Photo / Text Update","Help preparing updated card information before printing."],
-["Bulk / Family Cards","Ask us about multiple-card requirements."]
+["PVC ID Card","பிவிசி அடையாள அட்டை பிரிண்ட் மற்றும் தொடர்புடைய உதவி.","🪪",[
+["PVC ID Card Design","பிவிசி அடையாள அட்டை வடிவமைப்பு தயாரிக்க உதவி."],
+["PVC Card Printing","பிவிசி அட்டை பிரிண்ட் உதவி."],
+["Photo / Text Update","பிரிண்ட் செய்வதற்கு முன் அட்டை தகவலை புதுப்பிக்க உதவி."],
+["Bulk / Family Cards","பல அட்டைகள் தேவைகள் குறித்து எங்களிடம் கேளுங்கள்."]
 ]],
-["Land Services","Land and property related services.","🏠",[
-["Patta / Chitta Assistance","Help accessing available land-record services."],
-["EC Assistance","Guidance for available Encumbrance Certificate services."],
-["Land Record Print","Assistance obtaining available online land records."],
-["Property Service Guidance","Help identifying the correct online land service."]
+["Land Services","நில மற்றும் சொத்து தொடர்பான சேவைகள்.","🏠",[
+["Patta / Chitta Assistance","நில பதிவு சேவைகளை பெற உதவி."],
+["EC Assistance","பொறுப்பு சான்றிதழ் (இசி) சேவைகளுக்கான வழிகாட்டுதல்."],
+["Land Record Print","ஆன்லைன் நில பதிவுகளை பெற உதவி."],
+["Property Service Guidance","சரியான ஆன்லைன் நில சேவையை கண்டறிய உதவி."]
 ]],
-["TN Police","Tamil Nadu Police online services.","👮",[
-["Police Certificate Assistance","Guidance for supported police certificate applications."],
-["Online Complaint Guidance","Help navigating available online complaint services."],
-["Status / Print Assistance","Assistance checking available application status."],
+["TN Police","தமிழ்நாடு காவல்துறை ஆன்லைன் சேவைகள்.","👮",[
+["Police Certificate Assistance","காவல்துறை சான்றிதழ் விண்ணப்பங்களுக்கான வழிகாட்டுதல்."],
+["Online Complaint Guidance","ஆன்லைன் புகார் சேவைகளை பயன்படுத்த உதவி."],
+["Status / Print Assistance","விண்ணப்ப நிலையை சரிபார்க்க உதவி."],
 ["Other Police Online Services","Ask us about the specific service you need."]
 ]],
-["Birth / Death","Birth and death certificate assistance.","📜",[
-["Birth Certificate","Assistance with available birth certificate services."],
-["Death Certificate","Assistance with available death certificate services."],
-["Correction Guidance","Help identifying the appropriate correction process."],
-["Certificate Download / Print","Assistance with available download and print options."]
+["Birth / Death","பிறப்பு மற்றும் இறப்பு சான்றிதழ் உதவி.","📜",[
+["Birth Certificate","பிறப்பு சான்றிதழ் சேவைகளுக்கான உதவி."],
+["Death Certificate","இறப்பு சான்றிதழ் சேவைகளுக்கான உதவி."],
+["Correction Guidance","சரியான திருத்த செயல்முறையை கண்டறிய உதவி."],
+["Certificate Download / Print","பதிவிறக்கம் மற்றும் பிரிண்ட் விருப்பங்களுக்கான உதவி."]
 ]],
-["PDF Service","PDF and document processing services.","📄",[
-["PDF Merge","Combine multiple PDF documents."],
-["PDF Split","Separate pages from a PDF."],
-["PDF to Image","Convert supported PDF pages to images."],
-["Image to PDF","Create a PDF from supported images."],
-["Document Scan / Print","Scan, print and prepare documents for online submission."]
+["PDF Service","பிடிஎஃப் மற்றும் ஆவண செயலாக்க சேவைகள்.","📄",[
+["PDF Merge","பல பிடிஎஃப் ஆவணங்களை இணைக்கவும்."],
+["PDF Split","பிடிஎஃப்பிலிருந்து பக்கங்களை பிரிக்கவும்."],
+["PDF to Image","பிடிஎஃப் பக்கங்களை படங்களாக மாற்றவும்."],
+["Image to PDF","படங்களிலிருந்து பிடிஎஃப் உருவாக்கவும்."],
+["Document Scan / Print","ஆன்லைன் சமர்ப்பிப்புக்காக ஆவணங்களை ஸ்கேன், பிரிண்ட் மற்றும் தயார் செய்யவும்."]
 ]],
-["Disability","Disability-related service assistance.","♿",[
-["Disability Certificate Guidance","Assistance navigating supported disability certificate processes."],
-["UDID Assistance","Guidance for available UDID-related online services."],
+["Disability","மாற்றுத்திறனாளி தொடர்பான சேவை உதவி.","♿",[
+["Disability Certificate Guidance","மாற்றுத்திறனாளி சான்றிதழ் செயல்முறைகளுக்கான உதவி."],
+["UDID Assistance","யூடிஐடி தொடர்பான ஆன்லைன் சேவைகளுக்கான வழிகாட்டுதல்."],
 ["Application Status","Help checking available application status."],
-["Document Preparation","Assistance organizing required documents."]
+["Document Preparation","தேவையான ஆவணங்களை தயார் செய்ய உதவி."]
 ]],
-["MSME","MSME registration and related services.","🏢",[
-["Udyam Registration","Assistance with online MSME/Udyam registration."],
-["Udyam Certificate","Help accessing or printing available certificate details."],
-["Update / Correction Guidance","Assistance with eligible updates."],
-["Business Document Support","Help preparing documents for online submission."]
+["MSME","எம்எஸ்எம்இ பதிவு மற்றும் தொடர்புடைய சேவைகள்.","🏢",[
+["Udyam Registration","ஆன்லைன் எம்எஸ்எம்இ/உத்யம் பதிவுக்கான உதவி."],
+["Udyam Certificate","சான்றிதழ் விவரங்களை பெற அல்லது பிரிண்ட் செய்ய உதவி."],
+["Update / Correction Guidance","தகுதியுள்ள புதுப்பிப்புகளுக்கான உதவி."],
+["Business Document Support","ஆன்லைன் சமர்ப்பிப்புக்கான ஆவணங்களை தயார் செய்ய உதவி."]
 ]],
-["E-Shram","E-Shram registration assistance.","👷",[
-["New Registration","Assistance with E-Shram registration."],
-["Profile Update","Guidance for available profile updates."],
-["Card Download / Print","Help accessing and printing available card details."],
-["Status Assistance","Help checking available registration information."]
+["E-Shram","இ-ஸ்ரம் பதிவு உதவி.","👷",[
+["New Registration","இ-ஸ்ரம் பதிவுக்கான உதவி."],
+["Profile Update","சுயவிவரம் புதுப்பிப்புகளுக்கான வழிகாட்டுதல்."],
+["Card Download / Print","அட்டை விவரங்களை பெற மற்றும் பிரிண்ட் செய்ய உதவி."],
+["Status Assistance","பதிவு தகவலை சரிபார்க்க உதவி."]
 ]],
-["Insurance","Insurance application assistance.","🛡️",[
-["Policy Service Assistance","Help navigating supported online insurance services."],
-["Premium / Payment Assistance","Guidance for supported online payment services."],
-["Policy Document Print","Help accessing available policy documents."],
-["Status / Service Request","Assistance with available online service requests."]
+["Insurance","காப்பீடு விண்ணப்ப உதவி.","🛡️",[
+["Policy Service Assistance","ஆன்லைன் காப்பீட்டு சேவைகளை பயன்படுத்த உதவி."],
+["Premium / Payment Assistance","ஆன்லைன் பணம் செலுத்துதல் சேவைகளுக்கான வழிகாட்டுதல்."],
+["Policy Document Print","பாலிசி ஆவணங்களை பெற உதவி."],
+["Status / Service Request","ஆன்லைன் சேவை கோரிக்கைகளுக்கான உதவி."]
 ]],
-["TNPSC","TNPSC application assistance.","📝",[
-["New Application","Help completing supported TNPSC online applications."],
-["One Time Registration Guidance","Assistance with eligible registration steps."],
-["Application Form Assistance","Help entering information and uploading documents."],
-["Status / Hall Ticket Guidance","Assistance accessing available status or hall-ticket services."]
+["TNPSC","டிஎன்பிஎஸ்சி விண்ணப்ப உதவி.","📝",[
+["New Application","டிஎன்பிஎஸ்சி ஆன்லைன் விண்ணப்பங்களை பூர்த்தி செய்ய உதவி."],
+["One Time Registration Guidance","தகுதியுள்ள பதிவு படிகளுக்கான உதவி."],
+["Application Form Assistance","தகவலை உள்ளிட்டு ஆவணங்களை பதிவேற்ற உதவி."],
+["Status / Hall Ticket Guidance","நிலை அல்லது ஹால் டிக்கெட் சேவைகளை பெற உதவி."]
 ]],
-["Loan Service","Loan application and digital assistance.","💵",[
-["Loan Application Assistance","Guidance for supported loan application processes."],
-["Document Preparation","Help organizing documents for application."],
-["Online Form Assistance","Help completing supported forms."],
-["Status Guidance","Assistance checking available application status."]
+["Loan Service","கடன் விண்ணப்பம் மற்றும் டிஜிட்டல் உதவி.","💵",[
+["Loan Application Assistance","கடன் விண்ணப்ப செயல்முறைகளுக்கான வழிகாட்டுதல்."],
+["Document Preparation","விண்ணப்பத்திற்கான ஆவணங்களை தயார் செய்ய உதவி."],
+["Online Form Assistance","படிவங்களை பூர்த்தி செய்ய உதவி."],
+["Status Guidance","விண்ணப்ப நிலையை சரிபார்க்க உதவி."]
 ]],
-["Farmer Service","Government services for farmers.","🌾",[
-["Farmer Registration Assistance","Help with supported farmer registrations."],
-["Certificate / Record Assistance","Guidance for available farmer-related documents."],
-["Scheme Application Guidance","Help navigating eligible online scheme applications."],
-["Status / Print","Assistance with available status and print services."]
+["Farmer Service","விவசாயிகளுக்கான அரசு சேவைகள்.","🌾",[
+["Farmer Registration Assistance","விவசாயி பதிவுகளுக்கான உதவி."],
+["Certificate / Record Assistance","விவசாயி தொடர்பான ஆவணங்களுக்கான வழிகாட்டுதல்."],
+["Scheme Application Guidance","தகுதியுள்ள ஆன்லைன் திட்ட விண்ணப்பங்களுக்கான உதவி."],
+["Status / Print","நிலை மற்றும் பிரிண்ட் சேவைகளுக்கான உதவி."]
 ]],
-["Nalavariyam","Welfare-board service assistance.","🤝",[
-["New Registration","Assistance with supported welfare-board registration."],
-["Renewal","Guidance for eligible renewal services."],
-["Member / Profile Update","Help with supported updates."],
-["Status / Certificate","Assistance accessing available status or certificates."]
+["Nalavariyam","நலவாரியம் சேவை உதவி.","🤝",[
+["New Registration","நலவாரியம் பதிவுக்கான உதவி."],
+["Renewal","தகுதியுள்ள புதுப்பிப்பு சேவைகளுக்கான வழிகாட்டுதல்."],
+["Member / Profile Update","புதுப்பிப்புகளுக்கான உதவி."],
+["Status / Certificate","நிலை அல்லது சான்றிதழ்களை பெற உதவி."]
 ]],
-["Driving Licence","Driving licence application assistance.","🚗",[
-["Learner Licence Guidance","Assistance with online learner-licence application steps."],
-["Driving Licence Services","Help navigating supported driving-licence services."],
-["Renewal Assistance","Guidance for eligible licence renewal."],
-["Address / Details Update","Assistance with supported changes."],
-["Appointment Guidance","Help with available appointment booking."]
+["Driving Licence","ஓட்டுநர் உரிமம் விண்ணப்ப உதவி.","🚗",[
+["Learner Licence Guidance","ஆன்லைன் லேர்னர் உரிமம் விண்ணப்ப படிகளுக்கான உதவி."],
+["Driving Licence Services","ஓட்டுநர் உரிமம் சேவைகளை பயன்படுத்த உதவி."],
+["Renewal Assistance","தகுதியுள்ள உரிம புதுப்பிப்புக்கான வழிகாட்டுதல்."],
+["Address / Details Update","மாற்றங்களுக்கான உதவி."],
+["Appointment Guidance","அப்பாயிண்ட்மென்ட் முன்பதிவுக்கான உதவி."]
 ]],
-["EB Services","Electricity board related services.","⚡",[
-["EB Bill Payment","Assistance with electricity bill payment."],
-["Service Connection Guidance","Help navigating supported online connection services."],
-["Name / Details Change Guidance","Assistance identifying the correct service."],
-["Payment Receipt / Status","Help checking available payment records."]
+["EB Services","மின்சார வாரியம் தொடர்பான சேவைகள்.","⚡",[
+["EB Bill Payment","மின்சார பில் பணம் செலுத்துவதற்கான உதவி."],
+["Service Connection Guidance","ஆன்லைன் இணைப்பு சேவைகளை பயன்படுத்த உதவி."],
+["Name / Details Change Guidance","சரியான சேவையை கண்டறிய உதவி."],
+["Payment Receipt / Status","பணம் செலுத்திய பதிவுகளை சரிபார்க்க உதவி."]
 ]],
-["Food Licence","Food licence and registration assistance.","🍽️",[
-["FSSAI Registration Guidance","Assistance with supported food-business registration."],
-["Licence Renewal Guidance","Help with eligible renewal processes."],
-["Certificate / Document Print","Assistance accessing available documents."],
+["Food Licence","உணவு உரிமம் மற்றும் பதிவு உதவி.","🍽️",[
+["FSSAI Registration Guidance","உணவு வணிக பதிவுக்கான உதவி."],
+["Licence Renewal Guidance","தகுதியுள்ள புதுப்பிப்பு செயல்முறைகளுக்கான உதவி."],
+["Certificate / Document Print","ஆவணங்களை பெற உதவி."],
 ["Application Status","Help checking available application status."]
 ]]
 ];
@@ -360,7 +360,7 @@ const grid=document.getElementById("serviceGrid");
 grid.innerHTML=services.map((s,i)=>`
 <article class="service" onclick="openService(${i})" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openService(${i})}">
   <div class="service-icon">${s[2]}</div><h3>${s[0]}</h3><p>${s[1]}</p>
-  <span class="enquire">View Services →</span>
+  <span class="enquire">சேவைகளை காண →</span>
 </article>`).join("");
 
 function openService(index){
@@ -373,12 +373,12 @@ function openService(index){
       <h3>${item[0]}</h3>
       <p>${item[1]}</p>
       <ul>
-        <li>Service guidance and application assistance</li>
-        <li>Document preparation support</li>
-        <li>Online submission guidance where applicable</li>
+        <li>சேவை வழிகாட்டுதல் மற்றும் விண்ணப்ப உதவி</li>
+        <li>ஆவணம் தயாரிப்பு உதவி</li>
+        <li>பொருந்தும் இடங்களில் ஆன்லைன் சமர்ப்பிப்பு வழிகாட்டுதல்</li>
       </ul>
       <div class="detail-actions">
-        <a class="detail-wa" href="https://wa.me/918973310128?text=${encodeURIComponent("Hello SkyNet E-Sevai Maiyam, I need help with "+s[0]+" - "+item[0])}" target="_blank">💬 Apply / Enquire</a>
+        <a class="detail-wa" href="https://wa.me/918973310128?text=${encodeURIComponent("Hello SkyNet E-Sevai Maiyam, I need help with "+s[0]+" - "+item[0])}" target="_blank">💬 விண்ணப்பிக்க / விசாரிக்க</a>
       </div>
     </article>`).join("");
   document.getElementById("servicePage").classList.add("show");
