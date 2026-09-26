@@ -5,522 +5,2520 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="SKYNET E-Sevai Maiyam - Government and digital service assistance.">
 <title>SKYNET E-Sevai Maiyam</title>
+
 <style>
-:root{--primary:#155eef;--primary2:#0b4acb;--dark:#0f172a;--muted:#64748b;--light:#f8fafc;--green:#16a34a;--border:#e2e8f0}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--dark);background:#fff;line-height:1.6}
-a{text-decoration:none;color:inherit}
-.container{width:min(1180px,92%);margin:auto}
-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);box-shadow:0 2px 15px rgba(15,23,42,.08)}
-.nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo{font-size:22px;font-weight:900;color:var(--primary)}.logo-image{display:flex;align-items:center;width:185px;height:58px;overflow:hidden}.logo-image img{display:block;width:100%;height:100%;object-fit:contain;object-position:left center}
-.navlinks{display:flex;align-items:center;gap:28px;font-weight:600;color:#334155}
-.navlinks a:hover{color:var(--primary)}
-.whatsapp{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;padding:11px 17px;border-radius:999px;font-weight:800}
-.menu{display:none;border:0;background:none;font-size:28px;cursor:pointer}
-.hero{padding-top:74px;min-height:720px;color:#fff;background:linear-gradient(135deg,#155eef 0%,#1749b7 50%,#312e81 100%);overflow:hidden}
-.hero-inner{min-height:646px;display:grid;grid-template-columns:1fr 1.15fr;align-items:center;gap:60px}
-.eyebrow{text-transform:uppercase;letter-spacing:3px;color:#bfdbfe;font-weight:800;font-size:13px}
-.hero h1{font-size:clamp(42px,6vw,72px);line-height:1.05;margin:14px 0 20px;font-weight:900}
-.hero h2{font-size:clamp(23px,3vw,34px);margin-bottom:18px}
-.hero p{font-size:18px;color:#dbeafe;max-width:650px}
-.buttons{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 23px;border-radius:9px;font-weight:800;border:2px solid transparent}
-.btn-white{background:#fff;color:var(--primary)}
-.btn-green{background:var(--green);color:#fff}
-.visual{display:flex;justify-content:center}
-.card-visual{background:rgba(255,255,255,.12);padding:25px;border-radius:30px;backdrop-filter:blur(8px)}
-.card-inner{background:#fff;color:var(--dark);border-radius:22px;padding:60px 40px;text-align:center;box-shadow:0 25px 60px rgba(0,0,0,.25)}
-.card-inner .icon{font-size:75px}.card-inner h3{font-size:25px;margin-top:18px}.card-inner p{color:var(--muted);font-size:15px;margin-top:8px}
-section{padding:90px 0}.center{text-align:center}.label{color:var(--primary);font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:2px}.section-title{font-size:42px;line-height:1.15;margin-top:10px}.section-text{color:var(--muted);max-width:760px;margin:16px auto 0;font-size:17px}
-.about{background:#fff}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px}.stat{background:#eff6ff;border-radius:18px;padding:25px;text-align:center}.stat strong{font-size:32px;color:var(--primary)}.stat span{display:block;color:var(--muted)}
-.services{background:#f8fafc}.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px}.service{background:#fff;border:1px solid var(--border);border-radius:18px;padding:23px;transition:.25s;box-shadow:0 4px 16px rgba(15,23,42,.03)}
-.service-image{width:100%;height:105px;overflow:hidden;border-radius:10px;margin-bottom:10px;background:#f1f5f9}.service-image img{width:100%;height:100%;object-fit:contain;display:block}.service:hover{transform:translateY(-5px);box-shadow:0 16px 30px rgba(15,23,42,.09);border-color:#bfdbfe}.service-icon{font-size:42px}.service h3{font-size:20px;margin-top:12px}.service p{color:var(--muted);font-size:14px;margin-top:6px}.enquire{display:inline-flex;margin-top:14px;color:var(--primary);font-weight:800}.more{text-align:center;margin-top:35px}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:25px;margin-top:50px}.step{text-align:center}.step-num{height:62px;width:62px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;margin:auto}.step h3{margin-top:17px;font-size:20px}.step p{margin-top:7px;color:var(--muted)}
-.why{background:#eff6ff}.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px}.feature{background:#fff;border-radius:18px;padding:28px;text-align:center}.feature-icon{font-size:45px}.feature h3{margin-top:12px}.feature p{color:var(--muted);margin-top:7px;font-size:14px}
-.contact{background:#0f172a;color:#fff}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}.contact .label{color:#60a5fa}.contact h2{font-size:44px;margin-top:10px}.contact-copy{color:#cbd5e1;margin-top:17px;max-width:560px}.contact-list{display:grid;gap:15px}.contact-item{display:block;background:rgba(255,255,255,.07);padding:20px;border-radius:15px}.contact-item.green{background:#16a34a}.contact-item small{display:block;color:#cbd5e1;margin-top:3px}
-footer{background:#020617;color:#94a3b8;text-align:center;padding:32px 15px}.footer-title{font-weight:900;color:#fff;font-size:19px}.copyright{border-top:1px solid #1e293b;margin-top:18px;padding-top:18px;font-size:13px}
-.floating{position:fixed;right:22px;bottom:22px;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:27px;box-shadow:0 10px 30px rgba(0,0,0,.25);z-index:999}
-.mobile-nav{display:none;padding:10px 4%;border-top:1px solid var(--border);background:#fff}.mobile-nav a{display:block;padding:12px 0;font-weight:700}
-.hero-slider{position:relative;width:100%;max-width:620px;aspect-ratio:4/3;border-radius:22px;overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,.25);background:#0b4acb}
-.hero-slider .slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease}
-.hero-slider .slide.active{opacity:1}
-.hero-slider .slide img{width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in}
-.lightbox{position:fixed;inset:0;background:rgba(2,6,23,.92);display:none;align-items:center;justify-content:center;z-index:3000;padding:28px}
-.lightbox.show{display:flex}
-.lightbox img{max-width:100%;max-height:90vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
-.lightbox-close{position:absolute;top:18px;right:22px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.15);color:#fff;font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.lightbox-close:hover{background:rgba(255,255,255,.28)}
-.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,255,255,.15);color:#fff;font-size:26px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.lightbox-nav:hover{background:rgba(255,255,255,.28)}
-.lightbox-prev{left:18px}
-.lightbox-next{right:18px}
-.lightbox-caption{position:absolute;left:0;right:0;bottom:18px;text-align:center;color:#fff;font-weight:700;font-size:15px;padding:0 70px}
-@media(max-width:700px){.lightbox{padding:14px}.lightbox-close{top:10px;right:10px}.lightbox-nav{width:42px;height:42px;font-size:20px}.lightbox-prev{left:8px}.lightbox-next{right:8px}.lightbox-caption{padding:0 55px;font-size:13px}}
-.hero-slider .slide-caption{position:absolute;left:0;right:0;bottom:0;padding:16px 18px 34px;background:linear-gradient(0deg,rgba(0,0,0,.55),transparent);color:#fff;font-weight:800;font-size:15px}
-.hero-slider .dots{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:2}
-.hero-slider .dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.55);cursor:pointer;border:0;padding:0}
-.hero-slider .dot.active{background:#fff}
-@media(max-width:700px){.hero-slider{max-width:100%}}
-@media(max-width:950px){.service-grid{grid-template-columns:repeat(3,1fr)}.feature-grid{grid-template-columns:repeat(2,1fr)}.hero-inner{grid-template-columns:1fr}.visual{display:none}.steps{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:700px){.logo-image{width:155px;height:52px}.navlinks,.nav>.whatsapp{display:none}.menu{display:block}.mobile-nav.show{display:block}.hero{min-height:auto}.hero-inner{min-height:auto;padding:80px 0 100px}.stats,.contact-grid{grid-template-columns:1fr}.service-grid{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}.section-title,.contact h2{font-size:34px}}
-@media(max-width:470px){.service-grid,.feature-grid{grid-template-columns:1fr}.hero h1{font-size:42px}.buttons .btn{width:100%}}
+:root{
+  --primary:#155eef;
+  --primary2:#0b4acb;
+  --dark:#0f172a;
+  --muted:#64748b;
+  --light:#f8fafc;
+  --green:#16a34a;
+  --border:#e2e8f0;
+}
 
-/* Service detail pages */
-.service{cursor:pointer}
-.service .enquire{cursor:pointer}
-#servicePage{display:none;min-height:100vh;padding:125px 0 80px;background:linear-gradient(180deg,#f8fafc,#fff)}
-#servicePage.show{display:block}
-.service-page-head{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:30px}
-.back-btn{border:0;background:#e2e8f0;color:#0f172a;padding:11px 17px;border-radius:10px;font-weight:800;cursor:pointer}
-.service-page-title{display:flex;align-items:center;gap:15px}
-.service-page-icon{font-size:48px}
-.service-page-title h1{font-size:clamp(30px,5vw,48px);line-height:1.1}
-.service-page-title p{color:#64748b;margin-top:5px}
-.detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.detail-card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:24px;box-shadow:0 8px 24px rgba(15,23,42,.05)}
-.detail-card h3{font-size:20px;margin-bottom:8px}
-.detail-card p{color:#64748b}
-.detail-card ul{padding-left:20px;color:#475569}
-.detail-card li{margin:7px 0}
-.detail-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
-.detail-wa{display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;padding:13px 20px;border-radius:10px;font-weight:900}
-.detail-call{display:inline-flex;align-items:center;justify-content:center;background:#155eef;color:#fff;padding:13px 20px;border-radius:10px;font-weight:900}
-.category-note{background:#eff6ff;border:1px solid #bfdbfe;border-radius:16px;padding:18px;margin-bottom:22px;color:#1e3a8a}
-@media(max-width:700px){.detail-grid{grid-template-columns:1fr}.service-page-head{align-items:flex-start;flex-direction:column}.service-page-title{align-items:flex-start}}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  color:var(--dark);
+  background:#fff;
+  line-height:1.6;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+button{
+  font-family:inherit;
+}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:1000;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(12px);
+  box-shadow:0 2px 15px rgba(15,23,42,.08);
+}
+
+.nav{
+  height:74px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:900;
+  color:var(--primary);
+}
+
+.logo-image{
+  display:flex;
+  align-items:center;
+  width:185px;
+  height:58px;
+  overflow:hidden;
+}
+
+.logo-image img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:left center;
+}
+
+.navlinks{
+  display:flex;
+  align-items:center;
+  gap:28px;
+  font-weight:600;
+  color:#334155;
+}
+
+.navlinks a:hover{
+  color:var(--primary);
+}
+
+.whatsapp{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  background:var(--green);
+  color:#fff;
+  padding:11px 17px;
+  border-radius:999px;
+  font-weight:800;
+}
+
+.menu{
+  display:none;
+  border:0;
+  background:none;
+  font-size:28px;
+  cursor:pointer;
+  color:#0f172a;
+}
+
+.mobile-nav{
+  display:none;
+  padding:10px 4%;
+  border-top:1px solid var(--border);
+  background:#fff;
+}
+
+.mobile-nav a{
+  display:block;
+  padding:12px 0;
+  font-weight:700;
+}
+
+.mobile-nav .whatsapp{
+  color:#fff;
+  margin:8px 0;
+  text-align:center;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  padding-top:74px;
+  min-height:720px;
+  color:#fff;
+  background:linear-gradient(
+    135deg,
+    #155eef 0%,
+    #1749b7 50%,
+    #312e81 100%
+  );
+  overflow:hidden;
+}
+
+.hero-inner{
+  min-height:646px;
+  display:grid;
+  grid-template-columns:1fr 1.15fr;
+  align-items:center;
+  gap:60px;
+}
+
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:3px;
+  color:#bfdbfe;
+  font-weight:800;
+  font-size:13px;
+}
+
+.hero h1{
+  font-size:clamp(42px,6vw,72px);
+  line-height:1.05;
+  margin:14px 0 20px;
+  font-weight:900;
+}
+
+.hero h2{
+  font-size:clamp(23px,3vw,34px);
+  margin-bottom:18px;
+}
+
+.hero p{
+  font-size:18px;
+  color:#dbeafe;
+  max-width:650px;
+}
+
+.buttons{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:13px 23px;
+  border-radius:9px;
+  font-weight:800;
+  border:2px solid transparent;
+}
+
+.btn-white{
+  background:#fff;
+  color:var(--primary);
+}
+
+.btn-green{
+  background:var(--green);
+  color:#fff;
+}
+
+.visual{
+  display:flex;
+  justify-content:center;
+}
+
+/* =========================
+   HERO SLIDER
+========================= */
+
+.hero-slider{
+  position:relative;
+  width:100%;
+  max-width:620px;
+  aspect-ratio:4/3;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 25px 60px rgba(0,0,0,.25);
+  background:#0b4acb;
+}
+
+.hero-slider .slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transition:opacity 1s ease;
+}
+
+.hero-slider .slide.active{
+  opacity:1;
+}
+
+.hero-slider .slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  cursor:zoom-in;
+}
+
+.hero-slider .slide-caption{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  padding:16px 18px 34px;
+  background:linear-gradient(
+    0deg,
+    rgba(0,0,0,.65),
+    transparent
+  );
+  color:#fff;
+  font-weight:800;
+  font-size:15px;
+}
+
+.hero-slider .dots{
+  position:absolute;
+  bottom:12px;
+  left:0;
+  right:0;
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  z-index:2;
+}
+
+.hero-slider .dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:rgba(255,255,255,.55);
+  cursor:pointer;
+  border:0;
+  padding:0;
+}
+
+.hero-slider .dot.active{
+  background:#fff;
+}
+
+/* =========================
+   LIGHTBOX
+========================= */
+
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(2,6,23,.92);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:3000;
+  padding:28px;
+}
+
+.lightbox.show{
+  display:flex;
+}
+
+.lightbox img{
+  max-width:100%;
+  max-height:90vh;
+  border-radius:12px;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+
+.lightbox-close{
+  position:absolute;
+  top:18px;
+  right:22px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  border:0;
+  background:rgba(255,255,255,.15);
+  color:#fff;
+  font-size:24px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.lightbox-close:hover{
+  background:rgba(255,255,255,.28);
+}
+
+.lightbox-nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  border:0;
+  background:rgba(255,255,255,.15);
+  color:#fff;
+  font-size:26px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.lightbox-nav:hover{
+  background:rgba(255,255,255,.28);
+}
+
+.lightbox-prev{
+  left:18px;
+}
+
+.lightbox-next{
+  right:18px;
+}
+
+.lightbox-caption{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:18px;
+  text-align:center;
+  color:#fff;
+  font-weight:700;
+  font-size:15px;
+  padding:0 70px;
+}
+
+/* =========================
+   GENERAL SECTIONS
+========================= */
+
+section{
+  padding:90px 0;
+}
+
+.center{
+  text-align:center;
+}
+
+.label{
+  color:var(--primary);
+  font-size:13px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:2px;
+}
+
+.section-title{
+  font-size:42px;
+  line-height:1.15;
+  margin-top:10px;
+}
+
+.section-text{
+  color:var(--muted);
+  max-width:760px;
+  margin:16px auto 0;
+  font-size:17px;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about{
+  background:#fff;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:42px;
+}
+
+.stat{
+  background:#eff6ff;
+  border-radius:18px;
+  padding:25px;
+  text-align:center;
+}
+
+.stat strong{
+  font-size:32px;
+  color:var(--primary);
+}
+
+.stat span{
+  display:block;
+  color:var(--muted);
+}
+
+/* =========================
+   SERVICES
+========================= */
+
+.services{
+  background:#f8fafc;
+}
+
+.service-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  margin-top:48px;
+}
+
+.service{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:23px;
+  transition:.25s;
+  box-shadow:0 4px 16px rgba(15,23,42,.03);
+  cursor:pointer;
+}
+
+.service:focus{
+  outline:3px solid #93c5fd;
+  outline-offset:2px;
+}
+
+.service-image{
+  width:100%;
+  height:105px;
+  overflow:hidden;
+  border-radius:10px;
+  margin-bottom:10px;
+  background:#f1f5f9;
+}
+
+.service-image img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+
+.service:hover{
+  transform:translateY(-5px);
+  box-shadow:0 16px 30px rgba(15,23,42,.09);
+  border-color:#bfdbfe;
+}
+
+.service h3{
+  font-size:20px;
+  margin-top:12px;
+}
+
+.service p{
+  color:var(--muted);
+  font-size:14px;
+  margin-top:6px;
+}
+
+.enquire{
+  display:inline-flex;
+  margin-top:14px;
+  color:var(--primary);
+  font-weight:800;
+  cursor:pointer;
+}
+
+/* =========================
+   HOW IT WORKS
+========================= */
+
+.steps{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:25px;
+  margin-top:50px;
+}
+
+.step{
+  text-align:center;
+}
+
+.step-num{
+  height:62px;
+  width:62px;
+  border-radius:50%;
+  background:var(--primary);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:18px;
+  margin:auto;
+}
+
+.step h3{
+  margin-top:17px;
+  font-size:20px;
+}
+
+.step p{
+  margin-top:7px;
+  color:var(--muted);
+}
+
+/* =========================
+   WHY
+========================= */
+
+.why{
+  background:#eff6ff;
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  margin-top:48px;
+}
+
+.feature{
+  background:#fff;
+  border-radius:18px;
+  padding:28px;
+  text-align:center;
+}
+
+.feature-icon{
+  font-size:45px;
+}
+
+.feature h3{
+  margin-top:12px;
+}
+
+.feature p{
+  color:var(--muted);
+  margin-top:7px;
+  font-size:14px;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact{
+  background:#0f172a;
+  color:#fff;
+}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:start;
+}
+
+.contact .label{
+  color:#60a5fa;
+}
+
+.contact h2{
+  font-size:44px;
+  margin-top:10px;
+}
+
+.contact-copy{
+  color:#cbd5e1;
+  margin-top:17px;
+  max-width:560px;
+}
+
+.contact-list{
+  display:grid;
+  gap:15px;
+}
+
+.contact-item{
+  display:block;
+  background:rgba(255,255,255,.07);
+  padding:20px;
+  border-radius:15px;
+}
+
+.contact-item.green{
+  background:#16a34a;
+}
+
+.contact-item small{
+  display:block;
+  color:#cbd5e1;
+  margin-top:3px;
+}
+
+/* =========================
+   SERVICE DETAIL PAGE
+========================= */
+
+#servicePage{
+  display:none;
+  min-height:100vh;
+  padding:125px 0 80px;
+  background:linear-gradient(180deg,#f8fafc,#fff);
+}
+
+#servicePage.show{
+  display:block;
+}
+
+.service-page-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:30px;
+}
+
+.back-btn{
+  border:0;
+  background:#e2e8f0;
+  color:#0f172a;
+  padding:11px 17px;
+  border-radius:10px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.service-page-title{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.service-page-icon{
+  font-size:48px;
+}
+
+.service-page-title h1{
+  font-size:clamp(30px,5vw,48px);
+  line-height:1.1;
+}
+
+.service-page-title p{
+  color:#64748b;
+  margin-top:5px;
+}
+
+.detail-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.detail-card{
+  background:#fff;
+  border:1px solid #e2e8f0;
+  border-radius:18px;
+  padding:24px;
+  box-shadow:0 8px 24px rgba(15,23,42,.05);
+}
+
+.detail-card h3{
+  font-size:20px;
+  margin-bottom:8px;
+}
+
+.detail-card p{
+  color:#64748b;
+}
+
+.detail-card ul{
+  padding-left:20px;
+  color:#475569;
+}
+
+.detail-card li{
+  margin:7px 0;
+}
+
+.detail-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:24px;
+}
+
+.detail-wa{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:#16a34a;
+  color:#fff;
+  padding:13px 20px;
+  border-radius:10px;
+  font-weight:900;
+}
+
+.category-note{
+  background:#eff6ff;
+  border:1px solid #bfdbfe;
+  border-radius:16px;
+  padding:18px;
+  margin-bottom:22px;
+  color:#1e3a8a;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  background:#020617;
+  color:#94a3b8;
+  text-align:center;
+  padding:32px 15px;
+}
+
+.footer-title{
+  font-weight:900;
+  color:#fff;
+  font-size:19px;
+}
+
+.copyright{
+  border-top:1px solid #1e293b;
+  margin-top:18px;
+  padding-top:18px;
+  font-size:13px;
+}
+
+/* =========================
+   FLOATING WHATSAPP
+========================= */
+
+.floating{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#16a34a;
+  color:#fff;
+  font-size:27px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+  z-index:999;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:950px){
+
+  .hero-inner{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+
+  /* Keep hero image visible on tablets */
+  .visual{
+    display:flex;
+  }
+
+  .service-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .feature-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .steps{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+  .logo-image{
+    width:155px;
+    height:52px;
+  }
+
+  .navlinks,
+  .nav>.whatsapp{
+    display:none;
+  }
+
+  .menu{
+    display:block;
+  }
+
+  .mobile-nav.show{
+    display:block;
+  }
+
+  /*
+    MOBILE HERO FIX
+
+    Header = 74px
+    Hero gets the header offset.
+    hero-inner gets its own internal spacing.
+  */
+
+  .hero{
+    padding-top:74px;
+    min-height:auto;
+  }
+
+  .hero-inner{
+    min-height:auto;
+    display:block;
+    padding:70px 0 90px;
+  }
+
+  /*
+    Hide hero image only on mobile phones.
+    It remains visible on tablets.
+  */
+
+  .visual{
+    display:none;
+  }
+
+  .hero h1{
+    font-size:42px;
+    margin-top:14px;
+    margin-bottom:18px;
+  }
+
+  .hero h2{
+    font-size:25px;
+    margin-bottom:16px;
+  }
+
+  .hero p{
+    font-size:16px;
+    line-height:1.7;
+  }
+
+  .buttons{
+    margin-top:25px;
+  }
+
+  .buttons .btn{
+    width:100%;
+  }
+
+  .stats,
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+
+  .service-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .steps{
+    grid-template-columns:1fr;
+  }
+
+  .section-title,
+  .contact h2{
+    font-size:34px;
+  }
+
+  .detail-grid{
+    grid-template-columns:1fr;
+  }
+
+  .service-page-head{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .service-page-title{
+    align-items:flex-start;
+  }
+
+  .lightbox{
+    padding:14px;
+  }
+
+  .lightbox-close{
+    top:10px;
+    right:10px;
+  }
+
+  .lightbox-nav{
+    width:42px;
+    height:42px;
+    font-size:20px;
+  }
+
+  .lightbox-prev{
+    left:8px;
+  }
+
+  .lightbox-next{
+    right:8px;
+  }
+
+  .lightbox-caption{
+    padding:0 55px;
+    font-size:13px;
+  }
+
+  .hero-slider{
+    max-width:100%;
+  }
+}
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media(max-width:470px){
+
+  .service-grid,
+  .feature-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:40px;
+  }
+
+  .hero h2{
+    font-size:23px;
+  }
+
+  .hero-inner{
+    padding:60px 0 75px;
+  }
+
+  .container{
+    width:90%;
+  }
+}
 </style>
 </head>
+
 <body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
+
   <div class="container nav">
-    <a class="logo logo-image" href="#home" aria-label="SKYNET E-Sevai Maiyam"><img src="images/logo.jpeg" alt="SKYNET E-Sevai Maiyam logo"></a>
+
+    <a
+      class="logo logo-image"
+      href="#home"
+      aria-label="SKYNET E-Sevai Maiyam"
+    >
+      <img
+        src="images/logo.jpeg"
+        alt="SKYNET E-Sevai Maiyam logo"
+      >
+    </a>
+
     <nav class="navlinks">
-      <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#how">How It Works</a><a href="#why">Why Choose Us</a><a href="#contact">Contact</a>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#how">How It Works</a>
+      <a href="#why">Why Choose Us</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <a class="whatsapp" href="https://wa.me/918973310128" target="_blank">💬 WhatsApp</a>
-    <button class="menu" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+
+    <a
+      class="whatsapp"
+      href="https://wa.me/918973310128"
+      target="_blank"
+      rel="noopener"
+    >
+      💬 WhatsApp
+    </a>
+
+    <button
+      class="menu"
+      onclick="toggleMenu()"
+      aria-label="Open menu"
+      type="button"
+    >
+      ☰
+    </button>
+
   </div>
+
   <nav id="mobileNav" class="mobile-nav">
-    <a href="#home" onclick="closeMenu()">Home</a><a href="#about" onclick="closeMenu()">About</a><a href="#services" onclick="closeMenu()">Services</a><a href="#how" onclick="closeMenu()">How It Works</a><a href="#why" onclick="closeMenu()">Why Choose Us</a><a href="#contact" onclick="closeMenu()">Contact</a>
-    <a class="whatsapp" href="https://wa.me/918973310128" target="_blank">💬 WhatsApp</a>
+
+    <a href="#home" onclick="closeMenu()">Home</a>
+    <a href="#about" onclick="closeMenu()">About</a>
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#how" onclick="closeMenu()">How It Works</a>
+    <a href="#why" onclick="closeMenu()">Why Choose Us</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+
+    <a
+      class="whatsapp"
+      href="https://wa.me/918973310128"
+      target="_blank"
+      rel="noopener"
+    >
+      💬 WhatsApp
+    </a>
+
   </nav>
+
 </header>
 
+
 <main>
+
+<!-- =========================
+     HOME / HERO
+========================= -->
+
 <section id="home" class="hero">
+
   <div class="container hero-inner">
+
     <div>
-      <div class="eyebrow">Welcome to</div>
-      <h1>Skynet E-sevai </h1>
-<h2>Thottiyam & Musiri</h2>
-      <h2>உங்கள் அரசு சேவைகள் அனைத்தும் ஒரே இடத்தில்</h2>
-      <p>Government and digital services made simple, convenient and accessible. Get assistance for various online government services from one place.</p>
-      <div class="buttons"><a class="btn btn-white" href="#services">சேவைகளை காண்க</a><a class="btn btn-green" href="https://wa.me/918973310128" target="_blank">WhatsApp Us</a></div>
+
+      <div class="eyebrow">
+        Welcome to
+      </div>
+
+      <h1>
+        Skynet E-sevai
+      </h1>
+
+      <h2>
+        Thottiyam & Musiri
+      </h2>
+
+      <h2>
+        உங்கள் அரசு சேவைகள் அனைத்தும் ஒரே இடத்தில்
+      </h2>
+
+      <p>
+        Government and digital services made simple,
+        convenient and accessible. Get assistance for
+        various online government services from one place.
+      </p>
+
+      <div class="buttons">
+
+        <a
+          class="btn btn-white"
+          href="#services"
+        >
+          சேவைகளை காண்க
+        </a>
+
+        <a
+          class="btn btn-green"
+          href="https://wa.me/918973310128"
+          target="_blank"
+          rel="noopener"
+        >
+          WhatsApp Us
+        </a>
+
+      </div>
+
     </div>
-    <div class="visual"><div class="hero-slider" id="heroSlider"><div class="dots" id="heroDots"></div></div></div>
-    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-      <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close">✕</button>
-      <button class="lightbox-nav lightbox-prev" onclick="lightboxStep(-1,event)" aria-label="Previous image">‹</button>
-      <img id="lightboxImg" src="" alt="">
-      <button class="lightbox-nav lightbox-next" onclick="lightboxStep(1,event)" aria-label="Next image">›</button>
-      <div class="lightbox-caption" id="lightboxCaption"></div>
+
+
+    <div class="visual">
+
+      <div
+        class="hero-slider"
+        id="heroSlider"
+      >
+
+        <div
+          class="dots"
+          id="heroDots"
+        ></div>
+
+      </div>
+
     </div>
+
   </div>
+
+
+  <!-- LIGHTBOX -->
+
+  <div
+    class="lightbox"
+    id="lightbox"
+    onclick="closeLightbox(event)"
+  >
+
+    <button
+      class="lightbox-close"
+      onclick="closeLightbox(event)"
+      aria-label="Close"
+      type="button"
+    >
+      ✕
+    </button>
+
+    <button
+      class="lightbox-nav lightbox-prev"
+      onclick="lightboxStep(-1,event)"
+      aria-label="Previous image"
+      type="button"
+    >
+      ‹
+    </button>
+
+    <img
+      id="lightboxImg"
+      src=""
+      alt=""
+    >
+
+    <button
+      class="lightbox-nav lightbox-next"
+      onclick="lightboxStep(1,event)"
+      aria-label="Next image"
+      type="button"
+    >
+      ›
+    </button>
+
+    <div
+      class="lightbox-caption"
+      id="lightboxCaption"
+    ></div>
+
+  </div>
+
 </section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
 
 <section id="about" class="about">
+
   <div class="container center">
-    <div class="label">About Us</div><h2 class="section-title">Your Local Digital Service Centre</h2>
-    <p class="section-text">SKYNET E-Sevai Maiyam helps people access government and digital services with clear guidance and convenient local support.</p>
-    <div class="stats"><div class="stat"><strong>20+</strong><span>Service Categories</span></div><div class="stat"><strong>Easy</strong><span>Service Assistance</span></div><div class="stat"><strong>Local</strong><span>Customer Support</span></div></div>
+
+    <div class="label">
+      About Us
+    </div>
+
+    <h2 class="section-title">
+      Your Local Digital Service Centre
+    </h2>
+
+    <p class="section-text">
+      SKYNET E-Sevai Maiyam helps people access
+      government and digital services with clear guidance
+      and convenient local support.
+    </p>
+
+    <div class="stats">
+
+      <div class="stat">
+        <strong>20+</strong>
+        <span>Service Categories</span>
+      </div>
+
+      <div class="stat">
+        <strong>Easy</strong>
+        <span>Service Assistance</span>
+      </div>
+
+      <div class="stat">
+        <strong>Local</strong>
+        <span>Customer Support</span>
+      </div>
+
+    </div>
+
   </div>
+
 </section>
+
+
+<!-- =========================
+     SERVICES
+========================= -->
 
 <section id="services" class="services">
+
   <div class="container">
-    <div class="center"><div class="label">Our Services</div><h2 class="section-title">Government & Digital Services</h2><p class="section-text">Assistance for a wide range of government and digital services.</p></div>
-    <div id="serviceGrid" class="service-grid"></div>
+
+    <div class="center">
+
+      <div class="label">
+        Our Services
+      </div>
+
+      <h2 class="section-title">
+        Government & Digital Services
+      </h2>
+
+      <p class="section-text">
+        Assistance for a wide range of government and digital services.
+      </p>
+
+    </div>
+
+    <div
+      id="serviceGrid"
+      class="service-grid"
+    ></div>
+
   </div>
+
 </section>
+
+
+<!-- =========================
+     HOW IT WORKS
+========================= -->
 
 <section id="how">
+
   <div class="container center">
-    <div class="label">Simple Process</div><h2 class="section-title">How It Works</h2>
-    <div class="steps">
-      <div class="step"><div class="step-num">01</div><h3>Choose Service</h3><p>Select the government or digital service you need.</p></div>
-      <div class="step"><div class="step-num">02</div><h3>Contact Us</h3><p>Contact us through WhatsApp or phone.</p></div>
-      <div class="step"><div class="step-num">03</div><h3>Submit Documents</h3><p>Provide the required documents for your service.</p></div>
-      <div class="step"><div class="step-num">04</div><h3>Get Your Service</h3><p>We assist you through the application process.</p></div>
+
+    <div class="label">
+      Simple Process
     </div>
+
+    <h2 class="section-title">
+      How It Works
+    </h2>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Choose Service</h3>
+        <p>
+          Select the government or digital service you need.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Contact Us</h3>
+        <p>
+          Contact us through WhatsApp or phone.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Submit Documents</h3>
+        <p>
+          Provide the required documents for your service.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Get Your Service</h3>
+        <p>
+          We assist you through the application process.
+        </p>
+      </div>
+
+    </div>
+
   </div>
+
 </section>
+
+
+<!-- =========================
+     WHY CHOOSE US
+========================= -->
 
 <section id="why" class="why">
+
   <div class="container center">
-    <div class="label">Why SKYNET</div><h2 class="section-title">Why Choose SKYNET E-Sevai Maiyam?</h2>
-    <div class="feature-grid">
-      <div class="feature"><div class="feature-icon">⚡</div><h3>Quick Service</h3><p>Efficient assistance with government and digital services.</p></div>
-      <div class="feature"><div class="feature-icon">🤝</div><h3>Friendly Support</h3><p>Guidance throughout the service process.</p></div>
-      <div class="feature"><div class="feature-icon">🔒</div><h3>Reliable</h3><p>Your service requirements handled carefully.</p></div>
-      <div class="feature"><div class="feature-icon">📱</div><h3>Easy Access</h3><p>Reach us easily by phone or WhatsApp.</p></div>
+
+    <div class="label">
+      Why SKYNET
     </div>
+
+    <h2 class="section-title">
+      Why Choose SKYNET E-Sevai Maiyam?
+    </h2>
+
+    <div class="feature-grid">
+
+      <div class="feature">
+        <div class="feature-icon">⚡</div>
+        <h3>Quick Service</h3>
+        <p>
+          Efficient assistance with government and digital services.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">🤝</div>
+        <h3>Friendly Support</h3>
+        <p>
+          Guidance throughout the service process.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">🔒</div>
+        <h3>Reliable</h3>
+        <p>
+          Your service requirements handled carefully.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">📱</div>
+        <h3>Easy Access</h3>
+        <p>
+          Reach us easily by phone or WhatsApp.
+        </p>
+      </div>
+
+    </div>
+
   </div>
+
 </section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
 
 <section id="contact" class="contact">
+
   <div class="container contact-grid">
-    <div><div class="label">Contact Us</div><h2>Need Help With a Service?</h2><p class="contact-copy">Contact SKYNET E-Sevai Maiyam for assistance with government and digital services.</p></div>
-    <div class="contact-list">
-      <a class="contact-item" href="tel:+918973310128">📞 <b>Call Us</b><small>+91 89733 10128</small></a>
-      <a class="contact-item green" href="https://wa.me/918973310128" target="_blank">💬 <b>WhatsApp</b><small>Chat with us on WhatsApp</small></a>
-      <div class="contact-item">📍 <b>Address</b><small>SKYNET E-Sevai Maiyam</small></div>
+
+    <div>
+
+      <div class="label">
+        Contact Us
+      </div>
+
+      <h2>
+        Need Help With a Service?
+      </h2>
+
+      <p class="contact-copy">
+        Contact SKYNET E-Sevai Maiyam for assistance
+        with government and digital services.
+      </p>
+
     </div>
+
+    <div class="contact-list">
+
+      <a
+        class="contact-item"
+        href="tel:+918973310128"
+      >
+        📞 <b>Call Us</b>
+        <small>+91 89733 10128</small>
+      </a>
+
+      <a
+        class="contact-item green"
+        href="https://wa.me/918973310128"
+        target="_blank"
+        rel="noopener"
+      >
+        💬 <b>WhatsApp</b>
+        <small>Chat with us on WhatsApp</small>
+      </a>
+
+      <div class="contact-item">
+        📍 <b>Address</b>
+        <small>SKYNET E-Sevai Maiyam</small>
+      </div>
+
+    </div>
+
   </div>
+
 </section>
 
-<section id="servicePage" aria-label="Service details">
+
+<!-- =========================
+     SERVICE DETAIL PAGE
+========================= -->
+
+<section
+  id="servicePage"
+  aria-label="Service details"
+>
+
   <div class="container">
+
     <div class="service-page-head">
-      <button class="back-btn" onclick="showAllServices()">← சேவைகளுக்கு திரும்பு</button>
-      <a class="whatsapp" href="https://wa.me/918973310128" target="_blank">💬 WhatsApp</a>
+
+      <button
+        class="back-btn"
+        onclick="showAllServices()"
+        type="button"
+      >
+        ← சேவைகளுக்கு திரும்பு
+      </button>
+
+      <a
+        class="whatsapp"
+        href="https://wa.me/918973310128"
+        target="_blank"
+        rel="noopener"
+      >
+        💬 WhatsApp
+      </a>
+
     </div>
+
     <div class="service-page-title">
-      <div class="service-page-icon" id="detailIcon">🪪</div>
-      <div>
-        <h1 id="detailTitle">Service</h1>
-        <p id="detailSubtitle">கீழே ஒரு சேவையை தேர்ந்தெடுக்கவும்</p>
+
+      <div
+        class="service-page-icon"
+        id="detailIcon"
+      >
+        🪪
       </div>
+
+      <div>
+
+        <h1 id="detailTitle">
+          Service
+        </h1>
+
+        <p id="detailSubtitle">
+          கீழே ஒரு சேவையை தேர்ந்தெடுக்கவும்
+        </p>
+
+      </div>
+
     </div>
+
     <div class="category-note">
-      உங்களுக்கு தேவையான சேவையை தேர்ந்தெடுக்கவும். ஆவண தேவைகள், கட்டணம் மற்றும் தற்போதைய செயல்முறை விவரங்களுக்கு, முக்கியமான ஆவணங்களை அனுப்பும் முன் SKYNET E-Sevai Maiyam-ஐ WhatsApp மூலம் தொடர்பு கொள்ளவும்.
+
+      உங்களுக்கு தேவையான சேவையை தேர்ந்தெடுக்கவும்.
+      ஆவண தேவைகள், கட்டணம் மற்றும் தற்போதைய செயல்முறை
+      விவரங்களுக்கு, முக்கியமான ஆவணங்களை அனுப்பும் முன்
+      SKYNET E-Sevai Maiyam-ஐ WhatsApp மூலம் தொடர்பு கொள்ளவும்.
+
     </div>
-    <div class="detail-grid" id="detailGrid"></div>
+
+    <div
+      class="detail-grid"
+      id="detailGrid"
+    ></div>
+
   </div>
+
 </section>
 
 </main>
 
-<footer><div class="footer-title">SKYNET E-Sevai Maiyam</div><p>Your trusted digital and government service centre.</p><div class="copyright">© <span id="year"></span> SKYNET E-Sevai Maiyam. All rights reserved.</div></footer>
-<a class="floating" href="https://wa.me/918973310128" target="_blank" aria-label="WhatsApp">💬</a>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+  <div class="footer-title">
+    SKYNET E-Sevai Maiyam
+  </div>
+
+  <p>
+    Your trusted digital and government service centre.
+  </p>
+
+  <div class="copyright">
+    © <span id="year"></span>
+    SKYNET E-Sevai Maiyam.
+    All rights reserved.
+  </div>
+
+</footer>
+
+
+<!-- =========================
+     FLOATING WHATSAPP
+========================= -->
+
+<a
+  class="floating"
+  href="https://wa.me/918973310128"
+  target="_blank"
+  rel="noopener"
+  aria-label="WhatsApp"
+>
+  💬
+</a>
+
 
 <script>
 
-const services=[
-["E-Sevai","தமிழ்நாடு அரசு இ-சேவை சேவைகள்.","🏛️",[
-["Community Certificate","ஆன்லைன் விண்ணப்பம் மற்றும் ஆவணம் சமர்ப்பிப்பதற்கான உதவி."],
-["Income Certificate","விண்ணப்பம் மற்றும் தேவையான ஆவணங்களுக்கான உதவி."],
-["Nativity / Residence","தகுதியுள்ள சான்றிதழ் சேவைகளுக்கான விண்ணப்ப உதவி."],
-["Other e-Sevai Services","உங்களுக்கு தேவையான சேவையைப் பற்றி எங்களிடம் கேளுங்கள்."]
-]],
-["Aadhaar","ஆதார் விண்ணப்பம் மற்றும் திருத்த உதவி.","🪪",[
-["New Aadhaar Enrolment","ஆதார் பதிவு செயல்முறை மற்றும் அப்பாயிண்ட்மென்ட் வழிகாட்டுதலுக்கான உதவி."],
-["Aadhaar Update","தகுதியுள்ள விவர மற்றும் ஆவண திருத்தங்களுக்கான உதவி."],
-["Mobile Number Update","அனுமதிக்கப்பட்ட இடங்களில் ஆதார் இணைந்த மொபைல் எண் திருத்தத்திற்கான வழிகாட்டுதல்."],
-["Address Update","முகவரி திருத்தம் மற்றும் தேவையான ஆவணங்கள் தயாரிப்பதற்கான உதவி."],
-["Aadhaar Download / Print","ஆதார் ஆவணத்தை பதிவிறக்கம் மற்றும் பிரிண்ட் செய்வதற்கான உதவி."],
-["Aadhaar Services – Other","உங்களுக்கு தேவையான குறிப்பிட்ட ஆதார் சேவையைப் பற்றி எங்களிடம் கேளுங்கள்."]
-]],
-["Vote ID","வாக்காளர் அடையாள அட்டை விண்ணப்பம் மற்றும் திருத்த சேவைகள்.","🗳️",[
-["New Voter Registration","புதிய வாக்காளர் பதிவு விண்ணப்பத்திற்கான உதவி."],
-["Correction / Update","தகுதியுள்ள வாக்காளர் விவரங்கள் திருத்தம் அல்லது புதுப்பிப்புக்கான உதவி."],
-["Address / Constituency Change","வாக்காளர் பதிவை மாற்றுவதற்கான வழிகாட்டுதல்."],
-["Voter ID Download / Status","விண்ணப்ப நிலையை சரிபார்க்க அல்லது வாக்காளர் ஆவணங்களை பெறுவதற்கான உதவி."]
-]],
-["Passport","பாஸ்போர்ட் விண்ணப்ப உதவி.","🛂",[
-["New Passport Application","விண்ணப்ப உதவி மற்றும் ஆவணம் தயாரிப்பு வழிகாட்டுதல்."],
-["Passport Renewal","புதுப்பிப்பு விண்ணப்பம் மற்றும் அப்பாயிண்ட்மென்ட் தயாரிப்புக்கான உதவி."],
-["Re-issue / Changes","தகுதியுள்ள மறுவழங்கல் அல்லது தனிப்பட்ட விவர மாற்றங்களுக்கான வழிகாட்டுதல்."],
-["Appointment Assistance","ஆன்லைன் அப்பாயிண்ட்மென்ட் மற்றும் விண்ணப்ப படிகளுக்கான உதவி."]
-]],
-["PAN Card","பான் கார்டு விண்ணப்பம் மற்றும் தொடர்புடைய சேவைகள்.","💳",[
-["New PAN Application","ஆன்லைன் பான் விண்ணப்பத்திற்கான உதவி."],
-["PAN Correction","தகுதியுள்ள பெயர், பிறந்த தேதி அல்லது பிற திருத்தங்களுக்கான உதவி."],
-["PAN Reprint","மறுபிரிண்ட் / நகல் பான் சேவைகளுக்கான உதவி."],
-["PAN Status","விண்ணப்ப நிலையை சரிபார்க்க உதவி."]
-]],
-["Employment","வேலைவாய்ப்பு பதிவு மற்றும் உதவி.","💼",[
-["New Registration","வேலைவாய்ப்பு பதிவுக்கான உதவி."],
-["Renewal","தற்போதுள்ள வேலைவாய்ப்பு பதிவை புதுப்பிப்பதற்கான வழிகாட்டுதல்."],
-["Profile Update","தகுதியுள்ள கல்வி மற்றும் தனிப்பட்ட விவரங்களை புதுப்பிக்க உதவி."],
-["Certificate / Print","வேலைவாய்ப்பு பதிவுகள் மற்றும் பிரிண்ட் சேவைகளுக்கான உதவி."]
-]],
-["Ration Card","குடும்ப அட்டை தொடர்பான சேவைகள்.","📋",[
-["New Smart Card Application","புதிய குடும்ப/ரேஷன் அட்டை விண்ணப்பத்திற்கான உதவி."],
-["Member Addition","தகுதியுள்ள குடும்ப உறுப்பினர்களை சேர்ப்பதற்கான வழிகாட்டுதல்."],
-["Member Deletion","தகுதியுள்ள உறுப்பினர் நீக்கம் கோரிக்கைக்கான வழிகாட்டுதல்."],
-["Address / Family Details Update","தகுதியுள்ள திருத்தங்கள் மற்றும் புதுப்பிப்புகளுக்கான உதவி."],
-["Smart Card Status / Print","நிலையை சரிபார்க்க மற்றும் பிரிண்ட் சேவைகளுக்கான உதவி."]
-]],
-["Education","கல்வி மற்றும் மாணவர் தொடர்பான சேவைகள்.","🎓",[
-["Scholarship Assistance","ஆன்லைன் ஸ்காலர்ஷிப் விண்ணப்பங்கள் மற்றும் ஆவணம் தயாரிப்புக்கான உதவி."],
-["Student Certificate Services","கல்வி சான்றிதழ் விண்ணப்பங்களுக்கான உதவி."],
-["Online Admission Assistance","தகுதியுள்ள ஆன்லைன் சேர்க்கை செயல்முறைகளுக்கான வழிகாட்டுதல்."],
-["Exam / Application Forms","ஆன்லைன் கல்வி தொடர்பான படிவங்களை பூர்த்தி செய்ய உதவி."]
-]],
-["EPFO","இபிஎஃப்ஓ மற்றும் பிஎஃப் தொடர்பான சேவைகள்.","🏦",[
-["UAN Assistance","யூஏஎன் தொடர்பான ஆன்லைன் சேவைகளுக்கான உதவி."],
-["PF Claim Assistance","ஆன்லைன் பிஎஃப் கோரிக்கை சமர்ப்பிப்பதற்கான வழிகாட்டுதல்."],
-["KYC Update Assistance","தகுதியுள்ள கேஒய்சி புதுப்பிப்புகளை தயாரிக்க மற்றும் சமர்ப்பிக்க உதவி."],
-["PF Passbook / Status","பிஎஃப் பதிவுகள் மற்றும் நிலையை பெற உதவி."]
-]],
-["Booking","ஆன்லைன் முன்பதிவு மற்றும் அப்பாயிண்ட்மென்ட் உதவி.","📅",[
-["Government Appointment","அரசு அப்பாயிண்ட்மென்ட் முன்பதிவு செய்ய உதவி."],
-["Service Centre Appointment","அப்பாயிண்ட்மென்ட் திட்டமிடலுக்கான உதவி."],
-["Online Ticket / Booking","ஆதரிக்கப்படும் ஆன்லைன் முன்பதிவு சேவைகளுக்கான உதவி."],
-["Status / Cancellation","முன்பதிவு நிலை அல்லது ரத்து விருப்பங்களுக்கான வழிகாட்டுதல்."]
-]],
-["Payments","டிஜிட்டல் பணம் செலுத்துதல் மற்றும் பில் பணம் செலுத்துதல் உதவி.","💰",[
-["EB Bill Payment","மின்சார பில் பணம் செலுத்துவதற்கான உதவி."],
-["Mobile / DTH Recharge","ஆதரிக்கப்படும் ரீசார்ஜ் சேவைகளுக்கான உதவி."],
-["Government Fee Payment","தகுதியுள்ள ஆன்லைன் அரசு கட்டணம் செலுத்துதலுக்கான வழிகாட்டுதல்."],
-["Payment Receipt / Status","பணம் செலுத்திய ரசீது அல்லது நிலையை சரிபார்க்க உதவி."]
-]],
-["PVC ID Card","பிவிசி அடையாள அட்டை பிரிண்ட் மற்றும் தொடர்புடைய உதவி.","🪪",[
-["PVC ID Card Design","பிவிசி அடையாள அட்டை வடிவமைப்பு தயாரிக்க உதவி."],
-["PVC Card Printing","பிவிசி அட்டை பிரிண்ட் உதவி."],
-["Photo / Text Update","பிரிண்ட் செய்வதற்கு முன் அட்டை தகவலை புதுப்பிக்க உதவி."],
-["Bulk / Family Cards","பல அட்டைகள் தேவைகள் குறித்து எங்களிடம் கேளுங்கள்."]
-]],
-["Land Services","நில மற்றும் சொத்து தொடர்பான சேவைகள்.","🏠",[
-["Patta / Chitta Assistance","நில பதிவு சேவைகளை பெற உதவி."],
-["EC Assistance","பொறுப்பு சான்றிதழ் (இசி) சேவைகளுக்கான வழிகாட்டுதல்."],
-["Land Record Print","ஆன்லைன் நில பதிவுகளை பெற உதவி."],
-["Property Service Guidance","சரியான ஆன்லைன் நில சேவையை கண்டறிய உதவி."]
-]],
-["TN Police","தமிழ்நாடு காவல்துறை ஆன்லைன் சேவைகள்.","👮",[
-["Police Certificate Assistance","காவல்துறை சான்றிதழ் விண்ணப்பங்களுக்கான வழிகாட்டுதல்."],
-["Online Complaint Guidance","ஆன்லைன் புகார் சேவைகளை பயன்படுத்த உதவி."],
-["Status / Print Assistance","விண்ணப்ப நிலையை சரிபார்க்க உதவி."],
-["Other Police Online Services","Ask us about the specific service you need."]
-]],
-["Birth / Death","பிறப்பு மற்றும் இறப்பு சான்றிதழ் உதவி.","📜",[
-["Birth Certificate","பிறப்பு சான்றிதழ் சேவைகளுக்கான உதவி."],
-["Death Certificate","இறப்பு சான்றிதழ் சேவைகளுக்கான உதவி."],
-["Correction Guidance","சரியான திருத்த செயல்முறையை கண்டறிய உதவி."],
-["Certificate Download / Print","பதிவிறக்கம் மற்றும் பிரிண்ட் விருப்பங்களுக்கான உதவி."]
-]],
-["PDF Service","பிடிஎஃப் மற்றும் ஆவண செயலாக்க சேவைகள்.","📄",[
-["PDF Merge","பல பிடிஎஃப் ஆவணங்களை இணைக்கவும்."],
-["PDF Split","பிடிஎஃப்பிலிருந்து பக்கங்களை பிரிக்கவும்."],
-["PDF to Image","பிடிஎஃப் பக்கங்களை படங்களாக மாற்றவும்."],
-["Image to PDF","படங்களிலிருந்து பிடிஎஃப் உருவாக்கவும்."],
-["Document Scan / Print","ஆன்லைன் சமர்ப்பிப்புக்காக ஆவணங்களை ஸ்கேன், பிரிண்ட் மற்றும் தயார் செய்யவும்."]
-]],
-["Disability","மாற்றுத்திறனாளி தொடர்பான சேவை உதவி.","♿",[
-["Disability Certificate Guidance","மாற்றுத்திறனாளி சான்றிதழ் செயல்முறைகளுக்கான உதவி."],
-["UDID Assistance","யூடிஐடி தொடர்பான ஆன்லைன் சேவைகளுக்கான வழிகாட்டுதல்."],
-["Application Status","Help checking available application status."],
-["Document Preparation","தேவையான ஆவணங்களை தயார் செய்ய உதவி."]
-]],
-["MSME","எம்எஸ்எம்இ பதிவு மற்றும் தொடர்புடைய சேவைகள்.","🏢",[
-["Udyam Registration","ஆன்லைன் எம்எஸ்எம்இ/உத்யம் பதிவுக்கான உதவி."],
-["Udyam Certificate","சான்றிதழ் விவரங்களை பெற அல்லது பிரிண்ட் செய்ய உதவி."],
-["Update / Correction Guidance","தகுதியுள்ள புதுப்பிப்புகளுக்கான உதவி."],
-["Business Document Support","ஆன்லைன் சமர்ப்பிப்புக்கான ஆவணங்களை தயார் செய்ய உதவி."]
-]],
-["E-Shram","இ-ஸ்ரம் பதிவு உதவி.","👷",[
-["New Registration","இ-ஸ்ரம் பதிவுக்கான உதவி."],
-["Profile Update","சுயவிவரம் புதுப்பிப்புகளுக்கான வழிகாட்டுதல்."],
-["Card Download / Print","அட்டை விவரங்களை பெற மற்றும் பிரிண்ட் செய்ய உதவி."],
-["Status Assistance","பதிவு தகவலை சரிபார்க்க உதவி."]
-]],
-["Insurance","காப்பீடு விண்ணப்ப உதவி.","🛡️",[
-["Policy Service Assistance","ஆன்லைன் காப்பீட்டு சேவைகளை பயன்படுத்த உதவி."],
-["Premium / Payment Assistance","ஆன்லைன் பணம் செலுத்துதல் சேவைகளுக்கான வழிகாட்டுதல்."],
-["Policy Document Print","பாலிசி ஆவணங்களை பெற உதவி."],
-["Status / Service Request","ஆன்லைன் சேவை கோரிக்கைகளுக்கான உதவி."]
-]],
-["TNPSC","டிஎன்பிஎஸ்சி விண்ணப்ப உதவி.","📝",[
-["New Application","டிஎன்பிஎஸ்சி ஆன்லைன் விண்ணப்பங்களை பூர்த்தி செய்ய உதவி."],
-["One Time Registration Guidance","தகுதியுள்ள பதிவு படிகளுக்கான உதவி."],
-["Application Form Assistance","தகவலை உள்ளிட்டு ஆவணங்களை பதிவேற்ற உதவி."],
-["Status / Hall Ticket Guidance","நிலை அல்லது ஹால் டிக்கெட் சேவைகளை பெற உதவி."]
-]],
-["Loan Service","கடன் விண்ணப்பம் மற்றும் டிஜிட்டல் உதவி.","💵",[
-["Loan Application Assistance","கடன் விண்ணப்ப செயல்முறைகளுக்கான வழிகாட்டுதல்."],
-["Document Preparation","விண்ணப்பத்திற்கான ஆவணங்களை தயார் செய்ய உதவி."],
-["Online Form Assistance","படிவங்களை பூர்த்தி செய்ய உதவி."],
-["Status Guidance","விண்ணப்ப நிலையை சரிபார்க்க உதவி."]
-]],
-["Farmer Service","விவசாயிகளுக்கான அரசு சேவைகள்.","🌾",[
-["Farmer Registration Assistance","விவசாயி பதிவுகளுக்கான உதவி."],
-["Certificate / Record Assistance","விவசாயி தொடர்பான ஆவணங்களுக்கான வழிகாட்டுதல்."],
-["Scheme Application Guidance","தகுதியுள்ள ஆன்லைன் திட்ட விண்ணப்பங்களுக்கான உதவி."],
-["Status / Print","நிலை மற்றும் பிரிண்ட் சேவைகளுக்கான உதவி."]
-]],
-["Driving Licence","ஓட்டுநர் உரிமம் விண்ணப்ப உதவி.","🚗",[
-["Learner Licence Guidance","ஆன்லைன் லேர்னர் உரிமம் விண்ணப்ப படிகளுக்கான உதவி."],
-["Driving Licence Services","ஓட்டுநர் உரிமம் சேவைகளை பயன்படுத்த உதவி."],
-["Renewal Assistance","தகுதியுள்ள உரிம புதுப்பிப்புக்கான வழிகாட்டுதல்."],
-["Address / Details Update","மாற்றங்களுக்கான உதவி."],
-["Appointment Guidance","அப்பாயிண்ட்மென்ட் முன்பதிவுக்கான உதவி."]
-]],
-["EB Services","மின்சார வாரியம் தொடர்பான சேவைகள்.","⚡",[
-["EB Bill Payment","மின்சார பில் பணம் செலுத்துவதற்கான உதவி."],
-["Service Connection Guidance","ஆன்லைன் இணைப்பு சேவைகளை பயன்படுத்த உதவி."],
-["Name / Details Change Guidance","சரியான சேவையை கண்டறிய உதவி."],
-["Payment Receipt / Status","பணம் செலுத்திய பதிவுகளை சரிபார்க்க உதவி."]
-]],
-["Food Licence","உணவு உரிமம் மற்றும் பதிவு உதவி.","🍽️",[
-["FSSAI Registration Guidance","உணவு வணிக பதிவுக்கான உதவி."],
-["Licence Renewal Guidance","தகுதியுள்ள புதுப்பிப்பு செயல்முறைகளுக்கான உதவி."],
-["Certificate / Document Print","ஆவணங்களை பெற உதவி."],
-["Application Status","Help checking available application status."]
-]]
+/* =====================================================
+   SERVICES
+===================================================== */
+
+const services = [
+
+[
+  "E-Sevai",
+  "தமிழ்நாடு அரசு இ-சேவை சேவைகள்.",
+  "🏛️",
+  [
+    ["Community Certificate","ஆன்லைன் விண்ணப்பம் மற்றும் ஆவணம் சமர்ப்பிப்பதற்கான உதவி."],
+    ["Income Certificate","விண்ணப்பம் மற்றும் தேவையான ஆவணங்களுக்கான உதவி."],
+    ["Nativity / Residence","தகுதியுள்ள சான்றிதழ் சேவைகளுக்கான விண்ணப்ப உதவி."],
+    ["Other e-Sevai Services","உங்களுக்கு தேவையான சேவையைப் பற்றி எங்களிடம் கேளுங்கள்."]
+  ]
+],
+
+[
+  "Aadhaar",
+  "ஆதார் விண்ணப்பம் மற்றும் திருத்த உதவி.",
+  "🪪",
+  [
+    ["New Aadhaar Enrolment","ஆதார் பதிவு செயல்முறை மற்றும் அப்பாயிண்ட்மென்ட் வழிகாட்டுதலுக்கான உதவி."],
+    ["Aadhaar Update","தகுதியுள்ள விவர மற்றும் ஆவண திருத்தங்களுக்கான உதவி."],
+    ["Mobile Number Update","அனுமதிக்கப்பட்ட இடங்களில் ஆதார் இணைந்த மொபைல் எண் திருத்தத்திற்கான வழிகாட்டுதல்."],
+    ["Address Update","முகவரி திருத்தம் மற்றும் தேவையான ஆவணங்கள் தயாரிப்பதற்கான உதவி."],
+    ["Aadhaar Download / Print","ஆதார் ஆவணத்தை பதிவிறக்கம் மற்றும் பிரிண்ட் செய்வதற்கான உதவி."],
+    ["Aadhaar Services – Other","உங்களுக்கு தேவையான குறிப்பிட்ட ஆதார் சேவையைப் பற்றி எங்களிடம் கேளுங்கள்."]
+  ]
+],
+
+[
+  "Vote ID",
+  "வாக்காளர் அடையாள அட்டை விண்ணப்பம் மற்றும் திருத்த சேவைகள்.",
+  "🗳️",
+  [
+    ["New Voter Registration","புதிய வாக்காளர் பதிவு விண்ணப்பத்திற்கான உதவி."],
+    ["Correction / Update","தகுதியுள்ள வாக்காளர் விவரங்கள் திருத்தம் அல்லது புதுப்பிப்புக்கான உதவி."],
+    ["Address / Constituency Change","வாக்காளர் பதிவை மாற்றுவதற்கான வழிகாட்டுதல்."],
+    ["Voter ID Download / Status","விண்ணப்ப நிலையை சரிபார்க்க அல்லது வாக்காளர் ஆவணங்களை பெறுவதற்கான உதவி."]
+  ]
+],
+
+[
+  "Passport",
+  "பாஸ்போர்ட் விண்ணப்ப உதவி.",
+  "🛂",
+  [
+    ["New Passport Application","விண்ணப்ப உதவி மற்றும் ஆவணம் தயாரிப்பு வழிகாட்டுதல்."],
+    ["Passport Renewal","புதுப்பிப்பு விண்ணப்பம் மற்றும் அப்பாயிண்ட்மென்ட் தயாரிப்புக்கான உதவி."],
+    ["Re-issue / Changes","தகுதியுள்ள மறுவழங்கல் அல்லது தனிப்பட்ட விவர மாற்றங்களுக்கான வழிகாட்டுதல்."],
+    ["Appointment Assistance","ஆன்லைன் அப்பாயிண்ட்மென்ட் மற்றும் விண்ணப்ப படிகளுக்கான உதவி."]
+  ]
+],
+
+[
+  "PAN Card",
+  "பான் கார்டு விண்ணப்பம் மற்றும் தொடர்புடைய சேவைகள்.",
+  "💳",
+  [
+    ["New PAN Application","ஆன்லைன் பான் விண்ணப்பத்திற்கான உதவி."],
+    ["PAN Correction","தகுதியுள்ள பெயர், பிறந்த தேதி அல்லது பிற திருத்தங்களுக்கான உதவி."],
+    ["PAN Reprint","மறுபிரிண்ட் / நகல் பான் சேவைகளுக்கான உதவி."],
+    ["PAN Status","விண்ணப்ப நிலையை சரிபார்க்க உதவி."]
+  ]
+],
+
+[
+  "Employment",
+  "வேலைவாய்ப்பு பதிவு மற்றும் உதவி.",
+  "💼",
+  [
+    ["New Registration","வேலைவாய்ப்பு பதிவுக்கான உதவி."],
+    ["Renewal","தற்போதுள்ள வேலைவாய்ப்பு பதிவை புதுப்பிப்பதற்கான வழிகாட்டுதல்."],
+    ["Profile Update","தகுதியுள்ள கல்வி மற்றும் தனிப்பட்ட விவரங்களை புதுப்பிக்க உதவி."],
+    ["Certificate / Print","வேலைவாய்ப்பு பதிவுகள் மற்றும் பிரிண்ட் சேவைகளுக்கான உதவி."]
+  ]
+],
+
+[
+  "Ration Card",
+  "குடும்ப அட்டை தொடர்பான சேவைகள்.",
+  "📋",
+  [
+    ["New Smart Card Application","புதிய குடும்ப/ரேஷன் அட்டை விண்ணப்பத்திற்கான உதவி."],
+    ["Member Addition","தகுதியுள்ள குடும்ப உறுப்பினர்களை சேர்ப்பதற்கான வழிகாட்டுதல்."],
+    ["Member Deletion","தகுதியுள்ள உறுப்பினர் நீக்கம் கோரிக்கைக்கான வழிகாட்டுதல்."],
+    ["Address / Family Details Update","தகுதியுள்ள திருத்தங்கள் மற்றும் புதுப்பிப்புகளுக்கான உதவி."],
+    ["Smart Card Status / Print","நிலையை சரிபார்க்க மற்றும் பிரிண்ட் சேவைகளுக்கான உதவி."]
+  ]
+],
+
+[
+  "Education",
+  "கல்வி மற்றும் மாணவர் தொடர்பான சேவைகள்.",
+  "🎓",
+  [
+    ["Scholarship Assistance","ஆன்லைன் ஸ்காலர்ஷிப் விண்ணப்பங்கள் மற்றும் ஆவணம் தயாரிப்புக்கான உதவி."],
+    ["Student Certificate Services","கல்வி சான்றிதழ் விண்ணப்பங்களுக்கான உதவி."],
+    ["Online Admission Assistance","தகுதியுள்ள ஆன்லைன் சேர்க்கை செயல்முறைகளுக்கான வழிகாட்டுதல்."],
+    ["Exam / Application Forms","ஆன்லைன் கல்வி தொடர்பான படிவங்களை பூர்த்தி செய்ய உதவி."]
+  ]
+],
+
+[
+  "EPFO",
+  "இபிஎஃப்ஓ மற்றும் பிஎஃப் தொடர்பான சேவைகள்.",
+  "🏦",
+  [
+    ["UAN Assistance","யூஏஎன் தொடர்பான ஆன்லைன் சேவைகளுக்கான உதவி."],
+    ["PF Claim Assistance","ஆன்லைன் பிஎஃப் கோரிக்கை சமர்ப்பிப்பதற்கான வழிகாட்டுதல்."],
+    ["KYC Update Assistance","தகுதியுள்ள கேஒய்சி புதுப்பிப்புகளை தயாரிக்க மற்றும் சமர்ப்பிக்க உதவி."],
+    ["PF Passbook / Status","பிஎஃப் பதிவுகள் மற்றும் நிலையை பெற உதவி."]
+  ]
+],
+
+[
+  "Booking",
+  "ஆன்லைன் முன்பதிவு மற்றும் அப்பாயிண்ட்மென்ட் உதவி.",
+  "📅",
+  [
+    ["Government Appointment","அரசு அப்பாயிண்ட்மென்ட் முன்பதிவு செய்ய உதவி."],
+    ["Service Centre Appointment","அப்பாயிண்ட்மென்ட் திட்டமிடலுக்கான உதவி."],
+    ["Online Ticket / Booking","ஆதரிக்கப்படும் ஆன்லைன் முன்பதிவு சேவைகளுக்கான உதவி."],
+    ["Status / Cancellation","முன்பதிவு நிலை அல்லது ரத்து விருப்பங்களுக்கான வழிகாட்டுதல்."]
+  ]
+],
+
+[
+  "Payments",
+  "டிஜிட்டல் பணம் செலுத்துதல் மற்றும் பில் பணம் செலுத்துதல் உதவி.",
+  "💰",
+  [
+    ["EB Bill Payment","மின்சார பில் பணம் செலுத்துவதற்கான உதவி."],
+    ["Mobile / DTH Recharge","ஆதரிக்கப்படும் ரீசார்ஜ் சேவைகளுக்கான உதவி."],
+    ["Government Fee Payment","தகுதியுள்ள ஆன்லைன் அரசு கட்டணம் செலுத்துதலுக்கான வழிகாட்டுதல்."],
+    ["Payment Receipt / Status","பணம் செலுத்திய ரசீது அல்லது நிலையை சரிபார்க்க உதவி."]
+  ]
+],
+
+[
+  "PVC ID Card",
+  "பிவிசி அடையாள அட்டை பிரிண்ட் மற்றும் தொடர்புடைய உதவி.",
+  "🪪",
+  [
+    ["PVC ID Card Design","பிவிசி அடையாள அட்டை வடிவமைப்பு தயாரிக்க உதவி."],
+    ["PVC Card Printing","பிவிசி அட்டை பிரிண்ட் உதவி."],
+    ["Photo / Text Update","பிரிண்ட் செய்வதற்கு முன் அட்டை தகவலை புதுப்பிக்க உதவி."],
+    ["Bulk / Family Cards","பல அட்டைகள் தேவைகள் குறித்து எங்களிடம் கேளுங்கள்."]
+  ]
+],
+
+[
+  "Land Services",
+  "நில மற்றும் சொத்து தொடர்பான சேவைகள்.",
+  "🏠",
+  [
+    ["Patta / Chitta Assistance","நில பதிவு சேவைகளை பெற உதவி."],
+    ["EC Assistance","பொறுப்பு சான்றிதழ் (இசி) சேவைகளுக்கான வழிகாட்டுதல்."],
+    ["Land Record Print","ஆன்லைன் நில பதிவுகளை பெற உதவி."],
+    ["Property Service Guidance","சரியான ஆன்லைன் நில சேவையை கண்டறிய உதவி."]
+  ]
+],
+
+[
+  "TN Police",
+  "தமிழ்நாடு காவல்துறை ஆன்லைன் சேவைகள்.",
+  "👮",
+  [
+    ["Police Certificate Assistance","காவல்துறை சான்றிதழ் விண்ணப்பங்களுக்கான வழிகாட்டுதல்."],
+    ["Online Complaint Guidance","ஆன்லைன் புகார் சேவைகளை பயன்படுத்த உதவி."],
+    ["Status / Print Assistance","விண்ணப்ப நிலையை சரிபார்க்க உதவி."],
+    ["Other Police Online Services","உங்களுக்கு தேவையான குறிப்பிட்ட சேவையைப் பற்றி எங்களிடம் கேளுங்கள்."]
+  ]
+],
+
+[
+  "Birth / Death",
+  "பிறப்பு மற்றும் இறப்பு சான்றிதழ் உதவி.",
+  "📜",
+  [
+    ["Birth Certificate","பிறப்பு சான்றிதழ் சேவைகளுக்கான உதவி."],
+    ["Death Certificate","இறப்பு சான்றிதழ் சேவைகளுக்கான உதவி."],
+    ["Correction Guidance","சரியான திருத்த செயல்முறையை கண்டறிய உதவி."],
+    ["Certificate Download / Print","பதிவிறக்கம் மற்றும் பிரிண்ட் விருப்பங்களுக்கான உதவி."]
+  ]
+],
+
+[
+  "PDF Service",
+  "பிடிஎஃப் மற்றும் ஆவண செயலாக்க சேவைகள்.",
+  "📄",
+  [
+    ["PDF Merge","பல பிடிஎஃப் ஆவணங்களை இணைக்கவும்."],
+    ["PDF Split","பிடிஎஃப்பிலிருந்து பக்கங்களை பிரிக்கவும்."],
+    ["PDF to Image","பிடிஎஃப் பக்கங்களை படங்களாக மாற்றவும்."],
+    ["Image to PDF","படங்களிலிருந்து பிடிஎஃப் உருவாக்கவும்."],
+    ["Document Scan / Print","ஆன்லைன் சமர்ப்பிப்புக்காக ஆவணங்களை ஸ்கேன், பிரிண்ட் மற்றும் தயார் செய்யவும்."]
+  ]
+],
+
+[
+  "Disability",
+  "மாற்றுத்திறனாளி தொடர்பான சேவை உதவி.",
+  "♿",
+  [
+    ["Disability Certificate Guidance","மாற்றுத்திறனாளி சான்றிதழ் செயல்முறைகளுக்கான உதவி."],
+    ["UDID Assistance","யூடிஐடி தொடர்பான ஆன்லைன் சேவைகளுக்கான வழிகாட்டுதல்."],
+    ["Application Status","கிடைக்கக்கூடிய விண்ணப்ப நிலையை சரிபார்க்க உதவி."],
+    ["Document Preparation","தேவையான ஆவணங்களை தயார் செய்ய உதவி."]
+  ]
+],
+
+[
+  "MSME",
+  "எம்எஸ்எம்இ பதிவு மற்றும் தொடர்புடைய சேவைகள்.",
+  "🏢",
+  [
+    ["Udyam Registration","ஆன்லைன் எம்எஸ்எம்இ/உத்யம் பதிவுக்கான உதவி."],
+    ["Udyam Certificate","சான்றிதழ் விவரங்களை பெற அல்லது பிரிண்ட் செய்ய உதவி."],
+    ["Update / Correction Guidance","தகுதியுள்ள புதுப்பிப்புகளுக்கான உதவி."],
+    ["Business Document Support","ஆன்லைன் சமர்ப்பிப்புக்கான ஆவணங்களை தயார் செய்ய உதவி."]
+  ]
+],
+
+[
+  "E-Shram",
+  "இ-ஸ்ரம் பதிவு உதவி.",
+  "👷",
+  [
+    ["New Registration","இ-ஸ்ரம் பதிவுக்கான உதவி."],
+    ["Profile Update","சுயவிவரம் புதுப்பிப்புகளுக்கான வழிகாட்டுதல்."],
+    ["Card Download / Print","அட்டை விவரங்களை பெற மற்றும் பிரிண்ட் செய்ய உதவி."],
+    ["Status Assistance","பதிவு தகவலை சரிபார்க்க உதவி."]
+  ]
+],
+
+[
+  "Insurance",
+  "காப்பீடு விண்ணப்ப உதவி.",
+  "🛡️",
+  [
+    ["Policy Service Assistance","ஆன்லைன் காப்பீட்டு சேவைகளை பயன்படுத்த உதவி."],
+    ["Premium / Payment Assistance","ஆன்லைன் பணம் செலுத்துதல் சேவைகளுக்கான வழிகாட்டுதல்."],
+    ["Policy Document Print","பாலிசி ஆவணங்களை பெற உதவி."],
+    ["Status / Service Request","ஆன்லைன் சேவை கோரிக்கைகளுக்கான உதவி."]
+  ]
+],
+
+[
+  "TNPSC",
+  "டிஎன்பிஎஸ்சி விண்ணப்ப உதவி.",
+  "📝",
+  [
+    ["New Application","டிஎன்பிஎஸ்சி ஆன்லைன் விண்ணப்பங்களை பூர்த்தி செய்ய உதவி."],
+    ["One Time Registration Guidance","தகுதியுள்ள பதிவு படிகளுக்கான உதவி."],
+    ["Application Form Assistance","தகவலை உள்ளிட்டு ஆவணங்களை பதிவேற்ற உதவி."],
+    ["Status / Hall Ticket Guidance","நிலை அல்லது ஹால் டிக்கெட் சேவைகளை பெற உதவி."]
+  ]
+],
+
+[
+  "Loan Service",
+  "கடன் விண்ணப்பம் மற்றும் டிஜிட்டல் உதவி.",
+  "💵",
+  [
+    ["Loan Application Assistance","கடன் விண்ணப்ப செயல்முறைகளுக்கான வழிகாட்டுதல்."],
+    ["Document Preparation","விண்ணப்பத்திற்கான ஆவணங்களை தயார் செய்ய உதவி."],
+    ["Online Form Assistance","படிவங்களை பூர்த்தி செய்ய உதவி."],
+    ["Status Guidance","விண்ணப்ப நிலையை சரிபார்க்க உதவி."]
+  ]
+],
+
+[
+  "Farmer Service",
+  "விவசாயிகளுக்கான அரசு சேவைகள்.",
+  "🌾",
+  [
+    ["Farmer Registration Assistance","விவசாயி பதிவுகளுக்கான உதவி."],
+    ["Certificate / Record Assistance","விவசாயி தொடர்பான ஆவணங்களுக்கான வழிகாட்டுதல்."],
+    ["Scheme Application Guidance","தகுதியுள்ள ஆன்லைன் திட்ட விண்ணப்பங்களுக்கான உதவி."],
+    ["Status / Print","நிலை மற்றும் பிரிண்ட் சேவைகளுக்கான உதவி."]
+  ]
+],
+
+[
+  "Driving Licence",
+  "ஓட்டுநர் உரிமம் விண்ணப்ப உதவி.",
+  "🚗",
+  [
+    ["Learner Licence Guidance","ஆன்லைன் லேர்னர் உரிமம் விண்ணப்ப படிகளுக்கான உதவி."],
+    ["Driving Licence Services","ஓட்டுநர் உரிமம் சேவைகளை பயன்படுத்த உதவி."],
+    ["Renewal Assistance","தகுதியுள்ள உரிம புதுப்பிப்புக்கான வழிகாட்டுதல்."],
+    ["Address / Details Update","மாற்றங்களுக்கான உதவி."],
+    ["Appointment Guidance","அப்பாயிண்ட்மென்ட் முன்பதிவுக்கான உதவி."]
+  ]
+],
+
+[
+  "EB Services",
+  "மின்சார வாரியம் தொடர்பான சேவைகள்.",
+  "⚡",
+  [
+    ["EB Bill Payment","மின்சார பில் பணம் செலுத்துவதற்கான உதவி."],
+    ["Service Connection Guidance","ஆன்லைன் இணைப்பு சேவைகளை பயன்படுத்த உதவி."],
+    ["Name / Details Change Guidance","சரியான சேவையை கண்டறிய உதவி."],
+    ["Payment Receipt / Status","பணம் செலுத்திய பதிவுகளை சரிபார்க்க உதவி."]
+  ]
+],
+
+[
+  "Food Licence",
+  "உணவு உரிமம் மற்றும் பதிவு உதவி.",
+  "🍽️",
+  [
+    ["FSSAI Registration Guidance","உணவு வணிக பதிவுக்கான உதவி."],
+    ["Licence Renewal Guidance","தகுதியுள்ள புதுப்பிப்பு செயல்முறைகளுக்கான உதவி."],
+    ["Certificate / Document Print","ஆவணங்களை பெற உதவி."],
+    ["Application Status","கிடைக்கக்கூடிய விண்ணப்ப நிலையை சரிபார்க்க உதவி."]
+  ]
+]
+
 ];
 
-const grid=document.getElementById("serviceGrid");
-const serviceImages=[
-"images/eservice.png","images/adhaar.png","images/voter id.jpeg","images/passport.png","images/pan.png","images/Employment.png","images/ration.png","images/education.png","images/EPFO.png",
-"images/booking.png","images/payments.png","images/pvc.png","images/land.png","images/police.png","images/bd.png","images/pdf.png","images/dis.png","images/msme.png","images/esharm.png",
-"images/insurence.png","images/tnpsc.png","images/loan.png","images/farmer.png","images/driving.png","images/eb.png","images/food.png",
 
+/* =====================================================
+   SERVICE IMAGES
+===================================================== */
 
-"images/print.png","images/bank.png","images/insurance.png","images/certificate.png",
+const serviceImages = [
+
+  "images/eservice.png",
+  "images/adhaar.png",
+  "images/voter id.jpeg",
+  "images/passport.png",
+  "images/pan.png",
+  "images/Employment.png",
+  "images/ration.png",
+  "images/education.png",
+  "images/EPFO.png",
+  "images/booking.png",
+  "images/payments.png",
+  "images/pvc.png",
+  "images/land.png",
+  "images/police.png",
+  "images/bd.png",
+  "images/pdf.png",
+  "images/dis.png",
+  "images/msme.png",
+  "images/esharm.png",
+  "images/insurence.png",
+  "images/tnpsc.png",
+  "images/loan.png",
+  "images/farmer.png",
+  "images/driving.png",
+  "images/eb.png",
+  "images/food.png"
 
 ];
 
-grid.innerHTML=services.map((s,i)=>`
-<article class="service" onclick="openService(${i})" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openService(${i})}">
-  <div class="service-image"><img src="${serviceImages[i]||'images/adhaar.png'}" alt="${s[0]}" loading="lazy" onerror="this.style.display='none'"></div>
-  <h3>${s[0]}</h3><p>${s[1]}</p>
-  <span class="enquire">சேவைகளை காண →</span>
-</article>`).join("");
+
+/* =====================================================
+   SERVICE GRID
+===================================================== */
+
+const grid = document.getElementById("serviceGrid");
+
+grid.innerHTML = services.map((s,i) => `
+
+  <article
+    class="service"
+    onclick="openService(${i})"
+    tabindex="0"
+    onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openService(${i})}"
+  >
+
+    <div class="service-image">
+
+      <img
+        src="${serviceImages[i] || 'images/adhaar.png'}"
+        alt="${s[0]}"
+        loading="lazy"
+        onerror="this.style.display='none'"
+      >
+
+    </div>
+
+    <h3>
+      ${s[0]}
+    </h3>
+
+    <p>
+      ${s[1]}
+    </p>
+
+    <span class="enquire">
+      சேவைகளை காண →
+    </span>
+
+  </article>
+
+`).join("");
+
+
+/* =====================================================
+   OPEN SERVICE
+===================================================== */
 
 function openService(index){
-  const s=services[index];
-  document.getElementById("detailIcon").textContent=s[2];
-  document.getElementById("detailTitle").textContent=s[0];
-  document.getElementById("detailSubtitle").textContent=s[1];
-  document.getElementById("detailGrid").innerHTML=s[3].map(item=>`
+
+  const s = services[index];
+
+  document.getElementById("detailIcon").textContent = s[2];
+
+  document.getElementById("detailTitle").textContent = s[0];
+
+  document.getElementById("detailSubtitle").textContent = s[1];
+
+  document.getElementById("detailGrid").innerHTML = s[3].map(item => `
+
     <article class="detail-card">
-      <h3>${item[0]}</h3>
-      <p>${item[1]}</p>
+
+      <h3>
+        ${item[0]}
+      </h3>
+
+      <p>
+        ${item[1]}
+      </p>
+
       <ul>
-        <li>சேவை வழிகாட்டுதல் மற்றும் விண்ணப்ப உதவி</li>
-        <li>ஆவணம் தயாரிப்பு உதவி</li>
-        <li>பொருந்தும் இடங்களில் ஆன்லைன் சமர்ப்பிப்பு வழிகாட்டுதல்</li>
+
+        <li>
+          சேவை வழிகாட்டுதல் மற்றும் விண்ணப்ப உதவி
+        </li>
+
+        <li>
+          ஆவணம் தயாரிப்பு உதவி
+        </li>
+
+        <li>
+          பொருந்தும் இடங்களில் ஆன்லைன் சமர்ப்பிப்பு வழிகாட்டுதல்
+        </li>
+
       </ul>
+
       <div class="detail-actions">
-        <a class="detail-wa" href="https://wa.me/918973310128?text=${encodeURIComponent("Hello SKYNET E-Sevai Maiyam, I need help with "+s[0]+" - "+item[0])}" target="_blank">💬 விண்ணப்பிக்க / விசாரிக்க</a>
+
+        <a
+          class="detail-wa"
+          href="https://wa.me/918973310128?text=${encodeURIComponent(
+            "Hello SKYNET E-Sevai Maiyam, I need help with " +
+            s[0] +
+            " - " +
+            item[0]
+          )}"
+          target="_blank"
+          rel="noopener"
+        >
+          💬 விண்ணப்பிக்க / விசாரிக்க
+        </a>
+
       </div>
-    </article>`).join("");
-  document.getElementById("servicePage").classList.add("show");
-  document.querySelector("header").style.display="none";
-  document.querySelector("footer").style.display="none";
-  document.querySelector(".floating").style.display="none";
-  document.querySelector("main").querySelectorAll(":scope > section:not(#servicePage)").forEach(x=>x.style.display="none");
-  location.hash="service-"+encodeURIComponent(s[0]);
-  window.scrollTo({top:0,behavior:"smooth"});
+
+    </article>
+
+  `).join("");
+
+
+  document
+    .getElementById("servicePage")
+    .classList
+    .add("show");
+
+
+  document.querySelector("header").style.display = "none";
+
+  document.querySelector("footer").style.display = "none";
+
+  document.querySelector(".floating").style.display = "none";
+
+
+  document
+    .querySelector("main")
+    .querySelectorAll(":scope > section:not(#servicePage)")
+    .forEach(x => {
+      x.style.display = "none";
+    });
+
+
+  location.hash =
+    "service-" +
+    encodeURIComponent(s[0]);
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
 }
+
+
+/* =====================================================
+   SHOW ALL SERVICES
+===================================================== */
 
 function showAllServices(){
-  document.getElementById("servicePage").classList.remove("show");
-  document.querySelector("header").style.display="";
-  document.querySelector("footer").style.display="";
-  document.querySelector(".floating").style.display="";
-  document.querySelector("main").querySelectorAll(":scope > section:not(#servicePage)").forEach(x=>x.style.display="");
-  history.replaceState(null,"",location.pathname+location.search);
-  window.scrollTo({top:0,behavior:"smooth"});
+
+  document
+    .getElementById("servicePage")
+    .classList
+    .remove("show");
+
+
+  document.querySelector("header").style.display = "";
+
+  document.querySelector("footer").style.display = "";
+
+  document.querySelector(".floating").style.display = "";
+
+
+  document
+    .querySelector("main")
+    .querySelectorAll(":scope > section:not(#servicePage)")
+    .forEach(x => {
+      x.style.display = "";
+    });
+
+
+  history.replaceState(
+    null,
+    "",
+    location.pathname + location.search
+  );
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
 }
 
-document.getElementById("year").textContent=new Date().getFullYear();
 
-function toggleMenu(){document.getElementById("mobileNav").classList.toggle("show")}
-function closeMenu(){document.getElementById("mobileNav").classList.remove("show")}
+/* =====================================================
+   YEAR
+===================================================== */
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
 
 
-window.addEventListener("load",()=>{
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+function toggleMenu(){
+
+  document
+    .getElementById("mobileNav")
+    .classList
+    .toggle("show");
+
+}
+
+
+function closeMenu(){
+
+  document
+    .getElementById("mobileNav")
+    .classList
+    .remove("show");
+
+}
+
+
+/* =====================================================
+   OPEN SERVICE FROM URL
+===================================================== */
+
+window.addEventListener("load", () => {
+
   if(location.hash.startsWith("#service-")){
-    const name=decodeURIComponent(location.hash.substring(9));
-    const idx=services.findIndex(x=>x[0]===name);
-    if(idx>=0) openService(idx);
+
+    const name =
+      decodeURIComponent(
+        location.hash.substring(9)
+      );
+
+    const idx =
+      services.findIndex(
+        x => x[0] === name
+      );
+
+    if(idx >= 0){
+      openService(idx);
+    }
+
   }
+
 });
 
-/* ---- Hero running photo gallery ---- */
-// EASY IMAGE CHANGE: replace the files inside the image/ folder.
-// Example: image/aadhaar.jpg
-const heroPhotos=[
-  
-  {img:"images/1.jpg",caption:'Aadhaar சேவைகள் – ஒரே நாளில் மொபைல் எண் இணைத்து தரப்படும்.'},
-  {img:"images/2.jpg",caption:'Domestic Money Transfer – பணம் அனுப்பும் சேவை.'},
-  {img:"images/3.jpg",caption:'Credit Card – மூலம் பணம் எடுத்து தரப்படும்.'},
-  {img:"images/4.jpg",caption:'A3+ Colour Laser Print – Xerox, Printout, Scanning & Lamination.'},
-  {img:"images/5.jpg",caption:'TNeGA இ-சேவை மையம் – தமிழ்நாடு அரசு அங்கீகாரம் பெற்ற சேவைகள்.'},
-  {img:"images/6.jpg",caption:'Mini ATM – Debit Card, Credit Card மூலம் பணம் எடுக்கும் வசதி.'},
-  {img:"images/7.jpg",caption:'Credit Card – மூலம் பணம் எடுத்து தரப்படும்.'},
-  {img:"images/8.jpg",caption:'A3+ Colour Laser Print – A3, A4 மற்றும் பல வகை Printout சேவைகள்.'},
-  {img:"images/9.jpg",caption:'Domestic Money Transfer – எந்த வங்கிக்கும் பணம் அனுப்பலாம்.'},
-  {img:"images/10.jpg",caption:'Credit Card – Unlimited withdrawal மற்றும் credit card சேவை.'},
-  {img:"images/11.jpg",caption:'இ-சேவை மையம் – பட்டா, சிட்டா, EC, FMB, A Register மற்றும் நில சேவைகள்.'}
-  
-  
-  
+
+/* =====================================================
+   HERO PHOTO GALLERY
+===================================================== */
+
+const heroPhotos = [
+
+  {
+    img:"images/1.jpg",
+    caption:"Aadhaar சேவைகள் – ஒரே நாளில் மொபைல் எண் இணைத்து தரப்படும்."
+  },
+
+  {
+    img:"images/2.jpg",
+    caption:"Domestic Money Transfer – பணம் அனுப்பும் சேவை."
+  },
+
+  {
+    img:"images/3.jpg",
+    caption:"Credit Card – மூலம் பணம் எடுத்து தரப்படும்."
+  },
+
+  {
+    img:"images/4.jpg",
+    caption:"A3+ Colour Laser Print – Xerox, Printout, Scanning & Lamination."
+  },
+
+  {
+    img:"images/5.jpg",
+    caption:"TNeGA இ-சேவை மையம் – தமிழ்நாடு அரசு அங்கீகாரம் பெற்ற சேவைகள்."
+  },
+
+  {
+    img:"images/6.jpg",
+    caption:"Mini ATM – Debit Card, Credit Card மூலம் பணம் எடுக்கும் வசதி."
+  },
+
+  {
+    img:"images/7.jpg",
+    caption:"Credit Card – மூலம் பணம் எடுத்து தரப்படும்."
+  },
+
+  {
+    img:"images/8.jpg",
+    caption:"A3+ Colour Laser Print – A3, A4 மற்றும் பல வகை Printout சேவைகள்."
+  },
+
+  {
+    img:"images/9.jpg",
+    caption:"Domestic Money Transfer – எந்த வங்கிக்கும் பணம் அனுப்பலாம்."
+  },
+
+  {
+    img:"images/10.jpg",
+    caption:"Credit Card – Unlimited withdrawal மற்றும் credit card சேவை."
+  },
+
+  {
+    img:"images/11.jpg",
+    caption:"இ-சேவை மையம் – பட்டா, சிட்டா, EC, FMB, A Register மற்றும் நில சேவைகள்."
+  }
+
 ];
-const sliderEl=document.getElementById("heroSlider");
-const dotsEl=document.getElementById("heroDots");
-let heroIndex=0;
-let lightboxIndex=0;
+
+
+const sliderEl =
+  document.getElementById("heroSlider");
+
+const dotsEl =
+  document.getElementById("heroDots");
+
+
+let heroIndex = 0;
+
+let lightboxIndex = 0;
+
 let heroTimer;
 
-heroPhotos.forEach((p,i)=>{
-  const slide=document.createElement("div");
-  slide.className="slide"+(i===0?" active":"");
-  slide.innerHTML=`<img src="${p.img}" alt="${p.caption}" loading="${i===0?"eager":"lazy"}" onclick="openLightbox(${i})"><div class="slide-caption">${p.caption}</div>`;
-  sliderEl.insertBefore(slide,dotsEl);
 
-  const dot=document.createElement("button");
-  dot.className="dot"+(i===0?" active":"");
-  dot.setAttribute("aria-label","Show photo "+(i+1));
-  dot.onclick=()=>{goToSlide(i);resetHeroTimer();};
+/* =====================================================
+   CREATE SLIDES
+===================================================== */
+
+heroPhotos.forEach((p,i) => {
+
+  const slide =
+    document.createElement("div");
+
+  slide.className =
+    "slide" +
+    (i === 0 ? " active" : "");
+
+
+  slide.innerHTML = `
+
+    <img
+      src="${p.img}"
+      alt="${p.caption}"
+      loading="${i === 0 ? "eager" : "lazy"}"
+      onclick="openLightbox(${i})"
+    >
+
+    <div class="slide-caption">
+      ${p.caption}
+    </div>
+
+  `;
+
+
+  sliderEl.insertBefore(
+    slide,
+    dotsEl
+  );
+
+
+  const dot =
+    document.createElement("button");
+
+  dot.className =
+    "dot" +
+    (i === 0 ? " active" : "");
+
+
+  dot.setAttribute(
+    "aria-label",
+    "Show photo " + (i + 1)
+  );
+
+
+  dot.onclick = () => {
+
+    goToSlide(i);
+
+    resetHeroTimer();
+
+  };
+
+
   dotsEl.appendChild(dot);
+
 });
 
-const heroSlides=()=>sliderEl.querySelectorAll(".slide");
-const heroDots=()=>dotsEl.querySelectorAll(".dot");
+
+/* =====================================================
+   SLIDER FUNCTIONS
+===================================================== */
+
+const heroSlides =
+  () => sliderEl.querySelectorAll(".slide");
+
+const heroDots =
+  () => dotsEl.querySelectorAll(".dot");
+
 
 function goToSlide(i){
-  heroSlides().forEach(s=>s.classList.remove("active"));
-  heroDots().forEach(d=>d.classList.remove("active"));
-  heroIndex=(i+heroPhotos.length)%heroPhotos.length;
-  heroSlides()[heroIndex].classList.add("active");
-  heroDots()[heroIndex].classList.add("active");
+
+  heroSlides().forEach(
+    s => s.classList.remove("active")
+  );
+
+  heroDots().forEach(
+    d => d.classList.remove("active")
+  );
+
+
+  heroIndex =
+    (i + heroPhotos.length) %
+    heroPhotos.length;
+
+
+  heroSlides()[heroIndex]
+    .classList
+    .add("active");
+
+
+  heroDots()[heroIndex]
+    .classList
+    .add("active");
+
 }
-function nextSlide(){goToSlide(heroIndex+1);}
-function resetHeroTimer(){clearInterval(heroTimer);heroTimer=setInterval(nextSlide,3500);}
+
+
+function nextSlide(){
+
+  goToSlide(heroIndex + 1);
+
+}
+
+
+function resetHeroTimer(){
+
+  clearInterval(heroTimer);
+
+  heroTimer =
+    setInterval(
+      nextSlide,
+      3500
+    );
+
+}
+
+
 resetHeroTimer();
 
+
+/* =====================================================
+   LIGHTBOX
+===================================================== */
+
 function openLightbox(i){
-  lightboxIndex=i;
+
+  lightboxIndex = i;
+
   showLightboxImage();
-  document.getElementById("lightbox").classList.add("show");
+
+  document
+    .getElementById("lightbox")
+    .classList
+    .add("show");
+
   clearInterval(heroTimer);
+
 }
+
+
 function showLightboxImage(){
-  const p=heroPhotos[lightboxIndex];
-  document.getElementById("lightboxImg").src=p.img;
-  document.getElementById("lightboxImg").alt=p.caption;
-  document.getElementById("lightboxCaption").textContent=p.caption;
+
+  const p =
+    heroPhotos[lightboxIndex];
+
+
+  document.getElementById(
+    "lightboxImg"
+  ).src = p.img;
+
+
+  document.getElementById(
+    "lightboxImg"
+  ).alt = p.caption;
+
+
+  document.getElementById(
+    "lightboxCaption"
+  ).textContent = p.caption;
+
 }
+
+
 function lightboxStep(dir,e){
-  e.stopPropagation();
-  lightboxIndex=(lightboxIndex+dir+heroPhotos.length)%heroPhotos.length;
-  showLightboxImage();
-}
-function closeLightbox(e){
-  if(e.target.id==="lightbox"||e.target.classList.contains("lightbox-close")){
-    document.getElementById("lightbox").classList.remove("show");
-    resetHeroTimer();
+
+  if(e){
+    e.stopPropagation();
   }
+
+
+  lightboxIndex =
+    (lightboxIndex + dir + heroPhotos.length)
+    % heroPhotos.length;
+
+
+  showLightboxImage();
+
 }
-document.addEventListener("keydown",e=>{
-  if(!document.getElementById("lightbox").classList.contains("show")) return;
-  if(e.key==="Escape") document.getElementById("lightbox").classList.remove("show");
-  if(e.key==="ArrowLeft") lightboxStep(-1,{stopPropagation(){}});
-  if(e.key==="ArrowRight") lightboxStep(1,{stopPropagation(){}});
+
+
+function closeLightbox(e){
+
+  if(
+    e.target.id === "lightbox" ||
+    e.target.classList.contains("lightbox-close")
+  ){
+
+    document
+      .getElementById("lightbox")
+      .classList
+      .remove("show");
+
+
+    resetHeroTimer();
+
+  }
+
+}
+
+
+/* =====================================================
+   KEYBOARD LIGHTBOX CONTROLS
+===================================================== */
+
+document.addEventListener("keydown", e => {
+
+  const lightbox =
+    document.getElementById("lightbox");
+
+
+  if(
+    !lightbox.classList.contains("show")
+  ){
+    return;
+  }
+
+
+  if(e.key === "Escape"){
+
+    lightbox.classList.remove("show");
+
+    resetHeroTimer();
+
+  }
+
+
+  if(e.key === "ArrowLeft"){
+
+    lightboxStep(
+      -1,
+      {
+        stopPropagation(){}
+      }
+    );
+
+  }
+
+
+  if(e.key === "ArrowRight"){
+
+    lightboxStep(
+      1,
+      {
+        stopPropagation(){}
+      }
+    );
+
+  }
+
 });
+
 </script>
+
 </body>
 </html>
