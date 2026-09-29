@@ -263,6 +263,9 @@ a.contact-item:hover{transform:translateX(6px)}
 
   [EDIT-SERVICE-IMAGES] Service card pictures:
       -> Search "serviceImages". Pictures are in the SAME ORDER as the services list.
+      -> New exam services need these pictures: images/rrb.png , images/ssc.png , images/postoffice.png
+         (if a picture is missing, the card still works, just without a picture).
+      -> If you add a NEW category in the middle of the list, add its picture at the same position.
 
   [EDIT-AGENCY]    "Our Authorized Agency" running logos:
       -> Search "agency-track". Each logo is one line:
@@ -660,6 +663,29 @@ const services=[
 ["Licence Renewal Guidance","தகுதியுள்ள புதுப்பிப்பு செயல்முறைகளுக்கான உதவி.",["Existing FSSAI Licence","Identity Proof","Business Address Proof","Bank Account Details"]],
 ["Certificate / Document Print","ஆவணங்களை பெற உதவி.",["FSSAI Licence Number"]],
 ["Application Status","Help checking available application status.",["Application / Reference Number"]]
+]],
+["RRB","ரயில்வே ஆட்சேர்ப்பு வாரிய (RRB) தேர்வு விண்ணப்ப உதவி.","🚆",[
+["New Registration","RRB ஆன்லைன் பதிவு செய்ய உதவி.",["Aadhar Card","Photo","Signature","Email ID","Mobile Number"]],
+["Exam Application Form","NTPC, Group D, ALP, JE போன்ற தேர்வுகளுக்கு விண்ணப்பிக்க உதவி.",["Aadhar Card","Photo","Signature","10th Marksheet","Education Certificates (12th / ITI / Diploma / Degree as per notification)","Community Certificate (if applicable)","Email ID","Mobile Number"]],
+["Fee Payment","விண்ணப்பக் கட்டணம் செலுத்த உதவி.",["Registration Number","Password / Registered Mobile Number"]],
+["Correction / Modification","விண்ணப்ப திருத்த வசதியை பயன்படுத்த உதவி.",["Registration Number","Password / Registered Mobile Number","Supporting Document for the Correction"]],
+["Admit Card / Result Download","ஹால் டிக்கெட், தேர்வு நகர சீட்டு மற்றும் முடிவுகளை பெற உதவி.",["Registration Number","Date of Birth / Password"]],
+["Other RRB Services","உங்களுக்கு தேவையான RRB சேவையைப் பற்றி எங்களிடம் கேளுங்கள்.",["Contact us for the exact document list for your service"]]
+]],
+["SSC","பணியாளர் தேர்வு ஆணையம் (SSC) தேர்வு விண்ணப்ப உதவி.","📚",[
+["One Time Registration (OTR)","SSC ஒருமுறை பதிவு (OTR) செய்ய உதவி.",["Aadhar Card","Photo","Signature","10th Marksheet","Email ID","Mobile Number"]],
+["Exam Application Form","CGL, CHSL, MTS, GD Constable, Stenographer போன்ற தேர்வுகளுக்கு விண்ணப்பிக்க உதவி.",["OTR Registration Number & Password","Aadhar Card","Photo","Signature","Education Certificates (as per notification)","Community Certificate (if applicable)","Mobile Number"]],
+["Fee Payment","விண்ணப்பக் கட்டணம் செலுத்த உதவி.",["Registration Number","Password / Registered Mobile Number"]],
+["Correction / Modification","விண்ணப்ப திருத்த வசதியை பயன்படுத்த உதவி.",["Registration Number","Password / Registered Mobile Number","Supporting Document for the Correction"]],
+["Admit Card / Result Download","அனுமதிச் சீட்டு மற்றும் முடிவுகளை பெற உதவி.",["Registration Number","Date of Birth / Password"]],
+["Other SSC Services","உங்களுக்கு தேவையான SSC சேவையைப் பற்றி எங்களிடம் கேளுங்கள்.",["Contact us for the exact document list for your service"]]
+]],
+["Post Office","அஞ்சல் துறை (Post Office) தேர்வு மற்றும் வேலை விண்ணப்ப உதவி.","📮",[
+["GDS Online Registration","கிராமின் டாக் சேவக் (GDS) ஆன்லைன் பதிவு செய்ய உதவி.",["Aadhar Card","Photo","Signature","10th Marksheet","Community Certificate (if applicable)","Email ID","Mobile Number"]],
+["GDS Application / Fee Payment","GDS விண்ணப்பம் பூர்த்தி செய்ய மற்றும் கட்டணம் செலுத்த உதவி.",["Registration Number","Mobile Number","10th Marksheet","Photo","Signature"]],
+["Postman / MTS / PA-SA Exam Application","அஞ்சல் துறை தேர்வுகளுக்கு விண்ணப்பிக்க உதவி.",["Aadhar Card","Photo","Signature","10th Marksheet","Education Certificates (12th / Degree as per notification)","Community Certificate (if applicable)","Email ID","Mobile Number"]],
+["Admit Card / Result / Status","ஹால் டிக்கெட், முடிவுகள் மற்றும் விண்ணப்ப நிலையை சரிபார்க்க உதவி.",["Registration / Roll Number","Date of Birth"]],
+["Other Post Office Services","உங்களுக்கு தேவையான அஞ்சல் துறை சேவையைப் பற்றி எங்களிடம் கேளுங்கள்.",["Contact us for the exact document list for your service"]]
 ]]
 ];
 
@@ -670,6 +696,9 @@ const serviceImages=[
 "images/booking.png","images/payments.png","images/pvc.png","images/land.png","images/police.png","images/bd.png","images/pdf.png","images/dis.png","images/msme.png","images/esharm.png",
 "images/insurence.png","images/tnpsc.png","images/loan.png","images/farmer.png","images/driving.png","images/eb.png","images/food.png",
 
+
+/* NEW: RRB, SSC, Post Office pictures - add these 3 files to the images folder */
+"images/rrb.png","images/ssc.png","images/postoffice.png",
 
 "images/print.png","images/bank.png","images/insurance.png","images/certificate.png",
 
