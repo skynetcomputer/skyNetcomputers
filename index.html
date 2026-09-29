@@ -6,7 +6,7 @@
 <meta name="description" content="SKYNET E-Sevai Maiyam - Government and digital service assistance.">
 <title>SKYNET E-Sevai Maiyam</title>
 <style>
-:root{--primary:#155eef;--primary2:#0b4acb;--dark:#0f172a;--muted:#64748b;--light:#f8fafc;--green:#16a34a;--border:#e2e8f0}
+:root{/* [EDIT-COLORS] main colours of the website */--primary:#155eef;--primary2:#0b4acb;--dark:#0f172a;--muted:#64748b;--light:#f8fafc;--green:#16a34a;--border:#e2e8f0}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--dark);background:#fff;line-height:1.6}
@@ -39,6 +39,12 @@ section{padding:90px 0}.center{text-align:center}.label{color:var(--primary);fon
 .service-image{width:100%;height:105px;overflow:hidden;border-radius:10px;margin-bottom:10px;background:#f1f5f9}.service-image img{width:100%;height:100%;object-fit:contain;display:block}.service:hover{transform:translateY(-5px);box-shadow:0 16px 30px rgba(15,23,42,.09);border-color:#bfdbfe}.service-icon{font-size:42px}.service h3{font-size:20px;margin-top:12px}.service p{color:var(--muted);font-size:14px;margin-top:6px}.enquire{display:inline-flex;margin-top:14px;color:var(--primary);font-weight:800}.more{text-align:center;margin-top:35px}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:25px;margin-top:50px}.step{text-align:center}.step-num{height:62px;width:62px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;margin:auto}.step h3{margin-top:17px;font-size:20px}.step p{margin-top:7px;color:var(--muted)}
 .why{background:#eff6ff}.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px}.feature{background:#fff;border-radius:18px;padding:28px;text-align:center}.feature-icon{font-size:45px}.feature h3{margin-top:12px}.feature p{color:var(--muted);margin-top:7px;font-size:14px}
 .contact{background:#0f172a;color:#fff}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}.contact .label{color:#60a5fa}.contact h2{font-size:44px;margin-top:10px}.contact-copy{color:#cbd5e1;margin-top:17px;max-width:560px}.contact-list{display:grid;gap:15px}.contact-item{display:block;background:rgba(255,255,255,.07);padding:20px;border-radius:15px}.contact-item.green{background:#16a34a}.contact-item small{display:block;color:#cbd5e1;margin-top:3px}
+/* Instagram */
+.hero-visual-col{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%}
+.insta-top{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888);color:#fff;padding:10px 20px;border-radius:999px;font-weight:800;font-size:15px;box-shadow:0 8px 20px rgba(0,0,0,.25);text-align:center}
+.insta-top svg{width:20px;height:20px;fill:#fff;flex:0 0 auto}
+.contact-item.insta{background:linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888)}
+.contact-item.insta small{color:#fff}
 /* Our Authorized Agency - running logo strip */
 .agency-strip{
   background:#4b2edb;
@@ -72,7 +78,7 @@ section{padding:90px 0}.center{text-align:center}.label{color:var(--primary);fon
   display:flex;
   width:max-content;
   align-items:center;
-  animation:agencyScroll 28s linear infinite;
+  animation:agencyScroll 28s linear infinite; /* [EDIT-AGENCY] 28s = scroll speed, bigger = slower */
 }
 .agency-logo{
   width:155px;
@@ -134,10 +140,59 @@ footer{background:#020617;color:#94a3b8;text-align:center;padding:32px 15px}.foo
 .hero-slider .dots{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:2}
 .hero-slider .dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.55);cursor:pointer;border:0;padding:0}
 .hero-slider .dot.active{background:#fff}
-@media(max-width:700px){.hero-slider{max-width:100%}}
+@media(max-width:700px){.hero-slider{max-width:100%}.insta-top{font-size:13px;padding:9px 16px}}
 @media(max-width:950px){.service-grid{grid-template-columns:repeat(3,1fr)}.feature-grid{grid-template-columns:repeat(2,1fr)}.hero-inner{grid-template-columns:1fr}.visual{display:flex;justify-content:center;margin-top:20px}.steps{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.logo-image{width:155px;height:52px}.navlinks,.nav>.whatsapp{display:none}.menu{display:block}.mobile-nav.show{display:block}.hero{min-height:auto}.hero-inner{min-height:auto;padding:80px 0 100px}.stats,.contact-grid{grid-template-columns:1fr}.service-grid{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}.section-title,.contact h2{font-size:34px}}
 @media(max-width:470px){.service-grid,.feature-grid{grid-template-columns:1fr}.hero h1{font-size:42px}.buttons .btn{width:100%}}
+
+/* =====================================================================
+   [EDIT-ANIMATION] ANIMATIONS (smooth, light, no lag)
+   Only "transform" and "opacity" are animated - these run on the graphics
+   card, so the page stays smooth even on low-end phones.
+   TO TURN OFF ALL ANIMATION: delete everything from this comment down to
+   the line "END OF ANIMATIONS". Speed: change the seconds, e.g. .6s -> .4s
+   ===================================================================== */
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes zoomIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+@keyframes pulseRing{0%{transform:scale(1);opacity:.45}100%{transform:scale(1.7);opacity:0}}
+@keyframes softPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+
+/* Hero: text slides up one by one, slider zooms in */
+.hero-inner>div:first-child>*{animation:fadeUp .7s ease-out backwards}
+.hero-inner>div:first-child>*:nth-child(1){animation-delay:.05s}
+.hero-inner>div:first-child>*:nth-child(2){animation-delay:.15s}
+.hero-inner>div:first-child>*:nth-child(3){animation-delay:.25s}
+.hero-inner>div:first-child>*:nth-child(4){animation-delay:.35s}
+.hero-inner>div:first-child>*:nth-child(5){animation-delay:.45s}
+.hero-inner>div:first-child>*:nth-child(6){animation-delay:.55s}
+.visual{animation:zoomIn .8s ease-out .25s backwards}
+
+/* Slider: slow zoom on the active photo (stays zoomed while fading out - no jump) */
+.hero-slider .slide img{transform:scale(1);transition:transform 0s linear 1s}
+.hero-slider .slide.active img{transform:scale(1.07);transition:transform 4.5s ease-out 0s}
+
+/* Instagram button: gentle pulse; WhatsApp floating button: soft ring */
+.insta-top{animation:softPulse 3s ease-in-out 1.2s infinite}
+.floating::before{content:"";position:absolute;inset:0;border-radius:50%;background:#16a34a;z-index:-1;animation:pulseRing 2.2s ease-out infinite}
+
+/* Buttons and contact cards: small lift on hover */
+.btn,.whatsapp,.detail-wa,.back-btn,.contact-item{transition:transform .2s ease,box-shadow .2s ease}
+.btn:hover,.whatsapp:hover,.detail-wa:hover,.back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.18)}
+a.contact-item:hover{transform:translateX(6px)}
+
+/* Scroll reveal: elements fade up when they come into view (class added by script at the bottom) */
+.reveal{opacity:0}
+.reveal.in{opacity:1;animation:fadeUp .6s ease-out backwards;animation-delay:var(--d,0ms)}
+
+/* Service detail cards: fade up when a category is opened */
+.detail-card{animation:fadeUp .45s ease-out backwards}
+
+/* People who turned on "reduce motion" on their phone get no animation */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1}
+}
+/* END OF ANIMATIONS */
 
 /* Service detail pages */
 .service{cursor:pointer}
@@ -168,12 +223,113 @@ footer{background:#020617;color:#94a3b8;text-align:center;padding:32px 15px}.foo
 </style>
 </head>
 <body>
+<!--
+=====================================================================
+  EASY EDIT GUIDE - SKYNET E-SEVAI MAIYAM WEBSITE
+  Tip: Press Ctrl+F in your editor and search for the tag shown
+  (like  [EDIT-PHONE] ) to jump straight to that part.
+=====================================================================
+
+  [EDIT-PHONE]     Phone / WhatsApp number
+      Current number: 918973310128  (WhatsApp links)  and  +918973310128 (call link)
+      -> Use Find & Replace (Ctrl+H): replace 918973310128 with your new number.
+         (Use country code 91 first, no + and no spaces for WhatsApp links.)
+      -> Also change the visible text "+91 89733 10128" in the Contact section.
+
+  [EDIT-INSTAGRAM] Instagram link
+      Current link: https://www.instagram.com/skynete_sevai
+      -> Find & Replace this link to change it everywhere.
+      -> It appears in 2 places: above the hero slider and in the Contact section.
+      -> To REMOVE it from one place, delete that block (each block has a comment).
+
+  [EDIT-LOGO]      Logo:  replace the file  images/logo.jpeg  (keep the same name).
+
+  [EDIT-HERO]      Hero slider photos + captions (top of page):
+      -> Search "heroPhotos" near the bottom of this file.
+      -> Each line is one photo:  {img:"images/1.jpg", caption:'Your text'},
+      -> To add a photo: copy one line, change the file name and caption.
+      -> To remove a photo: delete its line.
+      -> Slide speed: search "3500" (3500 = 3.5 seconds).
+
+  [EDIT-SERVICES]  Services, sub-services and required documents:
+      -> Search "const services" near the bottom of this file.
+      -> Structure:
+           ["Category Name","Tamil description","emoji",[
+              ["Sub-service name","Tamil description",["Document 1","Document 2"]],
+           ]],
+      -> To add a document: add "New Document" inside the last [ ] list.
+      -> To add a sub-service: copy one ["..","..",[..]], line and edit it.
+      -> Keep every quote " and comma , exactly as in the examples.
+
+  [EDIT-SERVICE-IMAGES] Service card pictures:
+      -> Search "serviceImages". Pictures are in the SAME ORDER as the services list.
+
+  [EDIT-AGENCY]    "Our Authorized Agency" running logos:
+      -> Search "agency-track". Each logo is one line:
+         <div class="agency-logo"><img src="images/csc.png" alt="CSC"></div>
+      -> The list is written TWICE for smooth scrolling. Whatever you add or
+         remove in the first half, do the same in the second half.
+      -> Scroll speed: search "28s" (bigger number = slower).
+
+  [EDIT-ANIMATION] Animations (smooth, light, no lag)
+      -> Search "ANIMATIONS" in the <style> part. Delete that block to turn all animation off.
+      -> Make it faster/slower: change the seconds (.6s, .7s, .8s, 4.5s).
+      -> Also delete the "Scroll reveal" block at the very bottom of the script to fully remove it.
+
+  [EDIT-TEXT]      Headings and paragraphs: just change the text between the tags,
+                   e.g.  <h2>Thottiyam & Musiri</h2>
+
+  [EDIT-ADDRESS]   Address: in the Contact section, change "SKYNET E-Sevai Maiyam"
+                   under the 📍 Address line to your full address.
+
+  [EDIT-COLORS]    Colours: at the top of the <style> part, see  :root{--primary:...}
+      --primary = main blue,  --green = WhatsApp green,  --dark = dark text/background.
+
+
+  ---------------------------------------------------------------
+  EXAMPLES WITH PHOTOS (copy and paste these)
+  ---------------------------------------------------------------
+
+  EXAMPLE 1 - Add a NEW HERO SLIDER PHOTO
+    Step 1: Copy your photo into the images folder and name it  12.jpg
+            Folder look:   website/
+                             index.html
+                             images/
+                               logo.jpeg
+                               1.jpg  2.jpg ... 11.jpg
+                               12.jpg      <-- your new photo
+    Step 2: Search "heroPhotos", and after the last photo line add:
+            {img:"images/12.jpg",caption:'Passport சேவைகள் – விண்ணப்ப உதவி.'},
+    Step 3: Save and refresh the page. The photo now shows in the slider.
+
+  EXAMPLE 2 - Add a NEW AUTHORIZED AGENCY LOGO
+    Step 1: Put the logo in images folder, for example  images/bsnl.png
+    Step 2: Search "agency-track" and add this line in BOTH halves:
+            <div class="agency-logo"><img src="images/bsnl.png" alt="BSNL"></div>
+
+  EXAMPLE 3 - Change a SERVICE CARD PICTURE
+    Step 1: Put the picture in images folder, for example  images/newpan.png
+    Step 2: Search "serviceImages" and replace the file name of that service.
+            (PAN Card is the 5th picture: "images/pan.png" -> "images/newpan.png")
+
+  EXAMPLE 4 - Add a NEW DOCUMENT to a service
+    Find:    ["New PAN Application","...",["Aadhar Card","Photo","Signature"]],
+    Change:  ["New PAN Application","...",["Aadhar Card","Photo","Signature","Address Proof"]],
+
+  Photo tips: use .jpg or .png, keep file names simple (no spaces if possible),
+  and keep hero photos around 1200 x 900 px (4:3 shape) so they fit well.
+
+  IMPORTANT: Keep this file in the same folder as the  images  folder.
+=====================================================================
+-->
 <header>
   <div class="container nav">
+    <!-- [EDIT-LOGO] Logo file: images/logo.jpeg -->
     <a class="logo logo-image" href="#home" aria-label="SKYNET E-Sevai Maiyam"><img src="images/logo.jpeg" alt="SKYNET E-Sevai Maiyam logo"></a>
     <nav class="navlinks">
       <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#how">How It Works</a><a href="#why">Why Choose Us</a><a href="#contact">Contact</a>
     </nav>
+    <!-- [EDIT-PHONE] WhatsApp number in the link (918973310128) -->
     <a class="whatsapp" href="https://wa.me/918973310128" target="_blank">💬 WhatsApp</a>
     <button class="menu" onclick="toggleMenu()" aria-label="Open menu">☰</button>
   </div>
@@ -187,6 +343,7 @@ footer{background:#020617;color:#94a3b8;text-align:center;padding:32px 15px}.foo
 <section id="home" class="hero">
   <div class="container hero-inner">
     <div>
+      <!-- [EDIT-TEXT] Hero heading and description -->
       <div class="eyebrow">Welcome to</div>
       <h1>Skynet E-sevai </h1>
 <h2>Thottiyam & Musiri</h2>
@@ -194,7 +351,17 @@ footer{background:#020617;color:#94a3b8;text-align:center;padding:32px 15px}.foo
       <p>Government and digital services made simple, convenient and accessible. Get assistance for various online government services from one place.</p>
       <div class="buttons"><a class="btn btn-white" href="#services">சேவைகளை காண்க</a><a class="btn btn-green" href="https://wa.me/918973310128" target="_blank">WhatsApp Us</a></div>
     </div>
-    <div class="visual"><div class="hero-slider" id="heroSlider"><div class="dots" id="heroDots"></div></div></div>
+    <div class="visual">
+      <div class="hero-visual-col">
+        <!-- [EDIT-INSTAGRAM] INSTAGRAM BUTTON ABOVE SLIDER: change the link in href="", or delete this whole <a> ... </a> block to remove it -->
+        <a class="insta-top" href="https://www.instagram.com/skynete_sevai" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zM17.3 6a1.2 1.2 0 1 1-1.2 1.2A1.2 1.2 0 0 1 17.3 6z"/></svg>
+          Follow us on Instagram @skynete_sevai
+        </a>
+        <!-- [EDIT-HERO] Slider photos are set in the script at the bottom: search "heroPhotos" -->
+        <div class="hero-slider" id="heroSlider"><div class="dots" id="heroDots"></div></div>
+      </div>
+    </div>
     <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
       <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close">✕</button>
       <button class="lightbox-nav lightbox-prev" onclick="lightboxStep(-1,event)" aria-label="Previous image">‹</button>
@@ -209,6 +376,7 @@ footer{background:#020617;color:#94a3b8;text-align:center;padding:32px 15px}.foo
   <div class="container center">
     <div class="label">About Us</div><h2 class="section-title">Your Local Digital Service Centre</h2>
     <p class="section-text">SKYNET E-Sevai Maiyam helps people access government and digital services with clear guidance and convenient local support.</p>
+    <!-- [EDIT-TEXT] Numbers/labels in the About section (20+, Easy, Local) -->
     <div class="stats"><div class="stat"><strong>20+</strong><span>Service Categories</span></div><div class="stat"><strong>Easy</strong><span>Service Assistance</span></div><div class="stat"><strong>Local</strong><span>Customer Support</span></div></div>
   </div>
 </section>
@@ -216,6 +384,7 @@ footer{background:#020617;color:#94a3b8;text-align:center;padding:32px 15px}.foo
 <section id="services" class="services">
   <div class="container">
     <div class="center"><div class="label">Our Services</div><h2 class="section-title">Government & Digital Services</h2><p class="section-text">Assistance for a wide range of government and digital services.</p></div>
+    <!-- [EDIT-SERVICES] Service cards are created automatically from the script at the bottom: search "const services" -->
     <div id="serviceGrid" class="service-grid"></div>
   </div>
 </section>
@@ -248,8 +417,13 @@ footer{background:#020617;color:#94a3b8;text-align:center;padding:32px 15px}.foo
   <div class="container contact-grid">
     <div><div class="label">Contact Us</div><h2>Need Help With a Service?</h2><p class="contact-copy">Contact SKYNET E-Sevai Maiyam for assistance with government and digital services.</p></div>
     <div class="contact-list">
+      <!-- [EDIT-PHONE] CALL: change the number in href="tel:..." and the visible text below -->
       <a class="contact-item" href="tel:+918973310128">📞 <b>Call Us</b><small>+91 89733 10128</small></a>
+      <!-- [EDIT-PHONE] WHATSAPP: change the number inside the wa.me link -->
       <a class="contact-item green" href="https://wa.me/918973310128" target="_blank">💬 <b>WhatsApp</b><small>Chat with us on WhatsApp</small></a>
+      <!-- [EDIT-INSTAGRAM] INSTAGRAM IN CONTACT: change href="", or delete this whole <a> ... </a> block to remove it -->
+      <a class="contact-item insta" href="https://www.instagram.com/skynete_sevai" target="_blank" rel="noopener">📸 <b>Instagram</b><small>@skynete_sevai</small></a>
+      <!-- [EDIT-ADDRESS] Put your full shop address in the <small> text -->
       <div class="contact-item">📍 <b>Address</b><small>SKYNET E-Sevai Maiyam</small></div>
     </div>
   </div>
@@ -277,6 +451,7 @@ footer{background:#020617;color:#94a3b8;text-align:center;padding:32px 15px}.foo
 
 </main>
 
+<!-- [EDIT-AGENCY] Running logo strip. Logos are listed twice (needed for the loop) - edit both halves the same way. -->
 <section class="agency-strip" aria-label="Our Authorized Agency">
   <div class="agency-strip-inner">
     <div class="agency-strip-title">Our Authorized<br>Agency</div>
@@ -308,6 +483,9 @@ footer{background:#020617;color:#94a3b8;text-align:center;padding:32px 15px}.foo
 
 <script>
 
+/* [EDIT-SERVICES] SERVICE LIST
+   Format: ["Category","Tamil description","emoji",[ ["Sub-service","Tamil description",["Doc 1","Doc 2"]], ... ]],
+   Add a document = add "Name" inside the last [ ].  Add a service = copy one whole line and edit it. */
 const services=[
 ["E-Sevai","தமிழ்நாடு அரசு இ-சேவை சான்றிதழ்கள் மற்றும் சேவைகள்.","🏛️",[
 ["Income Certificate","குடும்ப ஆண்டு வருமானத்தை உறுதி செய்யும் அரசு சான்றிதழ்.",["Photo","Aadhar Card","Ration Card","Signature","Payslip (if Govt Salary Person)","PAN Card (if Parents in Govt Job)","Mobile Number"]],
@@ -485,6 +663,7 @@ const services=[
 ];
 
 const grid=document.getElementById("serviceGrid");
+/* [EDIT-SERVICE-IMAGES] One picture per category, in the SAME ORDER as the services list above */
 const serviceImages=[
 "images/eservice.png","images/adhaar.png","images/voter id.jpeg","images/passport.png","images/pan.png","images/Employment.png","images/ration.png","images/education.png","images/EPFO.png",
 "images/booking.png","images/payments.png","images/pvc.png","images/land.png","images/police.png","images/bd.png","images/pdf.png","images/dis.png","images/msme.png","images/esharm.png",
@@ -507,8 +686,8 @@ function openService(index){
   document.getElementById("detailIcon").textContent=s[2];
   document.getElementById("detailTitle").textContent=s[0];
   document.getElementById("detailSubtitle").textContent=s[1];
-  document.getElementById("detailGrid").innerHTML=s[3].map(item=>`
-    <article class="detail-card">
+  document.getElementById("detailGrid").innerHTML=s[3].map((item,k)=>`
+    <article class="detail-card" style="animation-delay:${Math.min(k,8)*60}ms">
       <h3>${item[0]}</h3>
       <p>${item[1]}</p>
       ${item[2]?`<div class="doc-title">📑 தேவையான ஆவணங்கள் / Required Documents</div>
@@ -553,8 +732,10 @@ window.addEventListener("load",()=>{
 });
 
 /* ---- Hero running photo gallery ---- */
-// EASY IMAGE CHANGE: replace the files inside the image/ folder.
-// Example: image/aadhaar.jpg
+/* [EDIT-HERO] EASY IMAGE CHANGE:
+   1. Put your photo in the images/ folder (example: images/12.jpg)
+   2. Add a line below:  {img:"images/12.jpg",caption:'Your caption'},
+   3. To remove a photo, delete its line. */
 const heroPhotos=[
   
   {img:"images/1.jpg",caption:'Aadhaar சேவைகள் – ஒரே நாளில் மொபைல் எண் இணைத்து தரப்படும்.'},
@@ -568,6 +749,9 @@ const heroPhotos=[
   {img:"images/9.jpg",caption:'Domestic Money Transfer – எந்த வங்கிக்கும் பணம் அனுப்பலாம்.'},
   {img:"images/10.jpg",caption:'Credit Card – Unlimited withdrawal மற்றும் credit card சேவை.'},
   {img:"images/11.jpg",caption:'இ-சேவை மையம் – பட்டா, சிட்டா, EC, FMB, A Register மற்றும் நில சேவைகள்.'}
+  // EXAMPLE - to add a new photo: put 12.jpg in the images folder,
+  // add a comma after the last photo line above, then add this line (without the // at the start):
+  // ,{img:"images/12.jpg",caption:'Passport சேவைகள் – விண்ணப்ப உதவி.'}
   
   
   
@@ -602,7 +786,7 @@ function goToSlide(i){
   heroDots()[heroIndex].classList.add("active");
 }
 function nextSlide(){goToSlide(heroIndex+1);}
-function resetHeroTimer(){clearInterval(heroTimer);heroTimer=setInterval(nextSlide,3500);}
+function resetHeroTimer(){clearInterval(heroTimer);heroTimer=setInterval(nextSlide,3500) /* [EDIT-HERO] 3500 = 3.5 seconds per photo */;}
 resetHeroTimer();
 
 function openLightbox(i){
@@ -634,6 +818,24 @@ document.addEventListener("keydown",e=>{
   if(e.key==="ArrowLeft") lightboxStep(-1,{stopPropagation(){}});
   if(e.key==="ArrowRight") lightboxStep(1,{stopPropagation(){}});
 });
+
+/* [EDIT-ANIMATION] Scroll reveal: adds a fade-up when a section comes into view.
+   To turn off, delete this whole block (or change the .6s in the CSS). */
+(function(){
+  if(!("IntersectionObserver" in window)||window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const els=document.querySelectorAll(".section-title,.section-text,.label,.stat,.service,.step,.feature,.contact h2,.contact-copy,.contact-item");
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target);}
+    });
+  },{threshold:.1,rootMargin:"0px 0px -30px 0px"});
+  els.forEach(el=>{
+    const i=Array.prototype.indexOf.call(el.parentElement.children,el);
+    el.style.setProperty("--d",(i%4)*90+"ms");
+    el.classList.add("reveal");
+    io.observe(el);
+  });
+})();
 </script>
 </body>
 </html>
