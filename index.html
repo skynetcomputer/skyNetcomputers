@@ -1029,8 +1029,8 @@ document.addEventListener("keydown",e=>{
 
     '<div id="skp-set" style="display:none"><label for="skNP">Change admin password (leave blank to keep)</label><input type="password" id="skNP" placeholder="New password">' +
     '<div class="ska-acts"><button class="ska-btn" id="skSave">Save password</button></div><div class="ska-msg" id="skStMsg"></div>' +
-    '<h4 class="ska-h4">Backup</h4><p class="ska-note">Changes are saved only in this browser. Download a backup now and then.</p>' +
-    '<div class="ska-acts"><button class="ska-btn o" id="skDl">⬇️ Download backup</button><button class="ska-btn o" id="skRs">⬆️ Restore backup</button><button class="ska-btn d" id="skReset">Remove all admin changes</button></div>' +
+    '<h4 class="ska-h4">Publish to GitHub</h4><p class="ska-note">After making Admin changes, enter your GitHub token and click Publish. The changes will be committed to your <b>skyNetcomputers</b> repository and then appear on the live website.</p>' +
+    '<label for="skGhToken">GitHub fine-grained token</label><input type="password" id="skGhToken" autocomplete="off" placeholder="Paste token here (not saved)"><div class="ska-acts"><button class="ska-btn" id="skPublish">🚀 Publish changes to GitHub</button></div><div class="ska-msg" id="skPubMsg"></div><p class="ska-note">Security: this token is used only for the current browser session and is not written to localStorage.</p><h4 class="ska-h4">Backup</h4><div class="ska-acts"><button class="ska-btn o" id="skDl">⬇️ Download backup</button><button class="ska-btn o" id="skRs">⬆️ Restore backup</button><button class="ska-btn d" id="skReset">Remove all admin changes</button></div>' +
     '<input type="file" id="skRFile" accept=".json,application/json" style="display:none"></div>' +
     "</div></div></div>";
   document.body.appendChild(wrap);
@@ -1187,6 +1187,77 @@ document.addEventListener("keydown",e=>{
     commit(); closeEd();
   };
 
+  /* ---------- publish current admin changes to GitHub ---------- */
+  var GH_OWNER = "skynetcomputer";
+  var GH_REPO = "skyNetcomputers";
+  var GH_BRANCH = "main";
+  var GH_PATH = "data/site-data.json";
+
+  function toBase64Unicode(text) {
+    var bytes = new TextEncoder().encode(text), binary = "";
+    for (var i = 0; i < bytes.length; i += 0x8000) {
+      binary += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+    }
+    return btoa(binary);
+  }
+
+  async function githubRequest(url, options) {
+    options = options || {};
+    options.headers = Object.assign({
+      "Accept": "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2026-03-10"
+    }, options.headers || {});
+    var r = await fetch(url, options);
+    var text = await r.text();
+    var data;
+    try { data = JSON.parse(text); } catch (e) { data = {}; }
+    if (!r.ok) throw new Error((data && data.message) || ("GitHub error " + r.status));
+    return data;
+  }
+
+  $("skPublish").onclick = async function () {
+    var token = $("skGhToken").value.trim();
+    if (!token) { msg("skPubMsg", "Paste your GitHub token first.", false); return; }
+    var btn = $("skPublish");
+    btn.disabled = true;
+    msg("skPubMsg", "Publishing changes to GitHub…", true);
+    try {
+      var payload = {
+        version: 1,
+        hero: heroX,
+        hidden: hidden,
+        services: svcX,
+        edits: edits
+      };
+      var body = JSON.stringify(payload, null, 2);
+      var api = "https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO + "/contents/" + GH_PATH;
+      var auth = { "Authorization": "Bearer " + token };
+      var current = null;
+      try {
+        current = await githubRequest(api + "?ref=" + encodeURIComponent(GH_BRANCH), { headers: auth });
+      } catch (e) {
+        if (!/404|Not Found/i.test(e.message)) throw e;
+      }
+      var commitBody = {
+        message: "Update website content from Admin Panel",
+        content: toBase64Unicode(body),
+        branch: GH_BRANCH
+      };
+      if (current && current.sha) commitBody.sha = current.sha;
+      await githubRequest(api, {
+        method: "PUT",
+        headers: Object.assign({}, auth, { "Content-Type": "application/json" }),
+        body: JSON.stringify(commitBody)
+      });
+      msg("skPubMsg", "Published successfully ✔ Refresh the live website after GitHub Pages updates.", true);
+      $("skGhToken").value = "";
+    } catch (e) {
+      msg("skPubMsg", "Publish failed: " + e.message, false);
+    } finally {
+      btn.disabled = false;
+    }
+  };
+
   /* settings + backup */
   $("skSave").onclick = function () {
     var p = $("skNP").value;
@@ -1238,6 +1309,31 @@ document.addEventListener("keydown",e=>{
   link.href = "#"; link.textContent = "🔒 Admin"; link.style.cssText = "margin-left:14px;opacity:.55;font-size:13px";
   link.onclick = function (e) { e.preventDefault(); openAdmin(); };
   host.appendChild(link);
+})();
+</script>
+
+<script>
+/* SKYNET E-SEVAI - load published Admin changes from GitHub */
+(function () {
+  "use strict";
+  var url = "https://raw.githubusercontent.com/skynetcomputer/skyNetcomputers/main/data/site-data.json?ts=" + Date.now();
+  fetch(url, { cache: "no-store" }).then(function (r) {
+    if (!r.ok) throw new Error("No published data");
+    return r.json();
+  }).then(function (d) {
+    var map = {
+      "sk_hero": Array.isArray(d.hero) ? d.hero : [],
+      "sk_hero_hidden": Array.isArray(d.hidden) ? d.hidden : [],
+      "sk_services": Array.isArray(d.services) ? d.services : [],
+      "sk_edits": { cats: (d.edits && d.edits.cats) || {}, subs: (d.edits && d.edits.subs) || {} }
+    };
+    var changed = false;
+    Object.keys(map).forEach(function (k) {
+      var next = JSON.stringify(map[k]), old = localStorage.getItem(k);
+      if (old !== next) { localStorage.setItem(k, next); changed = true; }
+    });
+    if (changed) location.reload();
+  }).catch(function () { /* First install or no published data yet. Keep built-in site. */ });
 })();
 </script>
 </body>
