@@ -1,9 +1,7 @@
 {
   "version": 1,
   "hero": [],
-  "hidden": [
-    "images/1.jpg"
-  ],
+  "hidden": [],
   "services": [],
   "edits": {
     "cats": {},
