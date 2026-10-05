@@ -447,9 +447,8 @@ grid.innerHTML=services.map((s,i)=>`
   <h3>${s[0]}</h3><p>${s[1]}</p><span class="enquire">சேவைகளை காண →</span>
 </article>`).join("");
 
-function renderService(index){
+function openService(index){
   const s=services[index];
-  if(!s) return false;
   document.getElementById("detailIcon").textContent=s[2];
   document.getElementById("detailTitle").textContent=s[0];
   document.getElementById("detailSubtitle").textContent=s[1];
@@ -464,45 +463,22 @@ function renderService(index){
   document.querySelector("footer").style.display="none";
   document.querySelector(".floating-wrap").style.display="none";
   document.querySelectorAll("main > section:not(#servicePage)").forEach(x=>x.style.display="none");
+  location.hash="service-"+encodeURIComponent(s[0]);
   window.scrollTo({top:0,behavior:"smooth"});
-  return true;
 }
-
-function openService(index, addHistory){
-  const s=services[index];
-  if(!s) return;
-  if(!renderService(index)) return;
-  if(addHistory !== false){
-    history.pushState({service:index},"",location.pathname+location.search+"#service-"+encodeURIComponent(s[0]));
-  }
-}
-
-function showAllServices(fromBack){
+function showAllServices(){
   document.getElementById("servicePage").classList.remove("show");
   document.querySelector("header").style.display="";
   document.querySelector("footer").style.display="";
   document.querySelector(".floating-wrap").style.display="";
   document.querySelectorAll("main > section:not(#servicePage)").forEach(x=>x.style.display="");
-  if(!fromBack && location.hash.startsWith("#service-")){
-    history.replaceState(null,"",location.pathname+location.search);
-  }
+  history.replaceState(null,"",location.pathname+location.search);
   window.scrollTo({top:0,behavior:"smooth"});
 }
-
-/* Android/mobile Back button: return from the service detail to the main page. */
-function restoreFromUrl(){
-  if(location.hash.startsWith("#service-")){
-    const idx=services.findIndex(x=>x[0]===decodeURIComponent(location.hash.substring(9)));
-    if(idx>=0){ renderService(idx); return; }
-  }
-  showAllServices(true);
-}
-window.addEventListener("popstate",restoreFromUrl);
-window.addEventListener("hashchange",restoreFromUrl);
 window.addEventListener("load",()=>{
   if(location.hash.startsWith("#service-")){
     const idx=services.findIndex(x=>x[0]===decodeURIComponent(location.hash.substring(9)));
-    if(idx>=0) renderService(idx);
+    if(idx>=0) openService(idx);
   }
 });
 
@@ -1009,27 +985,40 @@ document.addEventListener("keydown",e=>{
 </script>
 
 <script>
-/* SKYNET E-SEVAI - load published Admin changes from GitHub */
+/* SKYNET E-SEVAI - validated site-data.json loader */
 (function () {
   "use strict";
-  var url = "https://raw.githubusercontent.com/skynetcomputer/skyNetcomputers/main/data/site-data.json?ts=" + Date.now();
-  fetch(url, { cache: "no-store" }).then(function (r) {
-    if (!r.ok) throw new Error("No published data");
-    return r.json();
-  }).then(function (d) {
-    var map = {
-      "sk_hero": Array.isArray(d.hero) ? d.hero : [],
-      "sk_hero_hidden": Array.isArray(d.hidden) ? d.hidden : [],
-      "sk_services": Array.isArray(d.services) ? d.services : [],
-      "sk_edits": { cats: (d.edits && d.edits.cats) || {}, subs: (d.edits && d.edits.subs) || {} }
-    };
-    var changed = false;
-    Object.keys(map).forEach(function (k) {
-      var next = JSON.stringify(map[k]), old = localStorage.getItem(k);
-      if (old !== next) { localStorage.setItem(k, next); changed = true; }
-    });
-    if (changed) location.reload();
-  }).catch(function () { /* First install or no published data yet. Keep built-in site. */ });
+  var DATA_URL = "https://raw.githubusercontent.com/skynetcomputer/skyNetcomputers/main/data/site-data.json";
+  var VERSION = 1;
+  function setStatus(type, message) {
+    var el = document.getElementById("skJsonStatus");
+    if (!el) { el=document.createElement("div"); el.id="skJsonStatus"; el.style.cssText="position:fixed;left:12px;right:12px;bottom:12px;z-index:99999;padding:12px 14px;border-radius:12px;font:600 13px/1.45 system-ui,sans-serif;box-shadow:0 8px 28px rgba(0,0,0,.18);"; document.body.appendChild(el); }
+    el.style.background=type==="ok"?"#ecfdf5":"#fff7ed"; el.style.color=type==="ok"?"#166534":"#9a3412"; el.style.border="1px solid "+(type==="ok"?"#86efac":"#fdba74"); el.textContent=message;
+    if(type==="ok") setTimeout(function(){if(el.parentNode)el.remove();},3500);
+  }
+  function isObj(x){return x&&typeof x==="object"&&!Array.isArray(x);}
+  function validate(d){
+    if(!isObj(d)) throw new Error("JSON root must be an object.");
+    if(d.version!==undefined&&Number(d.version)!==VERSION) throw new Error("Unsupported JSON version: "+d.version+". Expected version "+VERSION+".");
+    if(d.hero!==undefined&&!Array.isArray(d.hero)) throw new Error('"hero" must be an array.');
+    if(d.hidden!==undefined&&!Array.isArray(d.hidden)) throw new Error('"hidden" must be an array.');
+    if(d.services!==undefined&&!Array.isArray(d.services)) throw new Error('"services" must be an array.');
+    if(d.edits!==undefined&&!isObj(d.edits)) throw new Error('"edits" must be an object.');
+    if(d.edits&&d.edits.cats!==undefined&&!isObj(d.edits.cats)) throw new Error('"edits.cats" must be an object.');
+    if(d.edits&&d.edits.subs!==undefined&&!isObj(d.edits.subs)) throw new Error('"edits.subs" must be an object.');
+  }
+  function normalize(d){return {hero:Array.isArray(d.hero)?d.hero:[],hidden:Array.isArray(d.hidden)?d.hidden:[],services:Array.isArray(d.services)?d.services:[],edits:{cats:isObj(d.edits&&d.edits.cats)?d.edits.cats:{},subs:isObj(d.edits&&d.edits.subs)?d.edits.subs:{}}};}
+  function saveAndReload(d){
+    var n=normalize(d), map={sk_hero:n.hero,sk_hero_hidden:n.hidden,sk_services:n.services,sk_edits:n.edits}, changed=false;
+    Object.keys(map).forEach(function(k){var next=JSON.stringify(map[k]);if(localStorage.getItem(k)!==next){localStorage.setItem(k,next);changed=true;}});
+    setStatus("ok","✓ site-data.json matched and loaded successfully.");
+    if(changed) setTimeout(function(){location.reload();},250);
+  }
+  setStatus("ok","Loading latest site-data.json…");
+  fetch(DATA_URL+"?ts="+Date.now(),{cache:"no-store",headers:{Accept:"application/json"}})
+    .then(function(r){if(!r.ok)throw new Error("GitHub returned HTTP "+r.status+" for site-data.json.");return r.text();})
+    .then(function(text){var d;try{d=JSON.parse(text);}catch(e){throw new Error("site-data.json contains invalid JSON.");}validate(d);saveAndReload(d);})
+    .catch(function(err){console.error("SKYNET site-data.json:",err);setStatus("error","⚠ site-data.json not matched: "+err.message+" Built-in site data is being kept.");});
 })();
 </script>
 
