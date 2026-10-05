@@ -444,8 +444,9 @@ grid.innerHTML=services.map((s,i)=>`
   <h3>${s[0]}</h3><p>${s[1]}</p><span class="enquire">சேவைகளை காண →</span>
 </article>`).join("");
 
-function openService(index){
+function renderService(index){
   const s=services[index];
+  if(!s) return;
   document.getElementById("detailIcon").textContent=s[2];
   document.getElementById("detailTitle").textContent=s[0];
   document.getElementById("detailSubtitle").textContent=s[1];
@@ -453,32 +454,39 @@ function openService(index){
     <article class="detail-card" style="animation-delay:${Math.min(k,8)*60}ms">
       <h3>${item[0]}</h3><p>${item[1]}</p>
       ${item[2]?`<div class="doc-title">📑 தேவையான ஆவணங்கள் / Required Documents</div><ul class="doc-list">${item[2].map(d=>`<li>${d}</li>`).join("")}</ul>`:""}
-      <a class="detail-wa" href="https://wa.me/918973310128?text=${encodeURIComponent("Hello SKYNET E-Sevai Maiyam Thottiyam, I need help with "+s[0]+" - "+item[0])}" target="_blank" rel="noopener">💬 WhatsApp Thottiyam</a>
-      <a class="detail-wa" href="https://wa.me/919952750897?text=${encodeURIComponent("Hello SKYNET E-Sevai Maiyam Musiri, I need help with "+s[0]+" - "+item[0])}" target="_blank" rel="noopener">💬 WhatsApp Musiri</a>
+      <a class="detail-wa" href="https://wa.me/918973310128?text=${encodeURIComponent("Hello SKYNET E-Sevai Maiyam Thottiyam, I need help with "+s[0]+" - "+item[0])}" target="_blank" rel="noopener">💬 WhatsApp</a>
     </article>`).join("");
   document.getElementById("servicePage").classList.add("show");
   document.querySelector("header").style.display="none";
   document.querySelector("footer").style.display="none";
   document.querySelector(".floating-wrap").style.display="none";
   document.querySelectorAll("main > section:not(#servicePage)").forEach(x=>x.style.display="none");
-  location.hash="service-"+encodeURIComponent(s[0]);
   window.scrollTo({top:0,behavior:"smooth"});
 }
-function showAllServices(){
+function openService(index){
+  const s=services[index];
+  if(!s) return;
+  renderService(index);
+  history.pushState({serviceIndex:index},"",location.pathname+location.search+"#service-"+encodeURIComponent(s[0]));
+}
+function showAllServices(fromBack){
   document.getElementById("servicePage").classList.remove("show");
   document.querySelector("header").style.display="";
   document.querySelector("footer").style.display="";
   document.querySelector(".floating-wrap").style.display="";
   document.querySelectorAll("main > section:not(#servicePage)").forEach(x=>x.style.display="");
-  history.replaceState(null,"",location.pathname+location.search);
+  if(!fromBack) history.replaceState(null,"",location.pathname+location.search);
   window.scrollTo({top:0,behavior:"smooth"});
 }
-window.addEventListener("load",()=>{
+function restoreFromUrl(){
   if(location.hash.startsWith("#service-")){
     const idx=services.findIndex(x=>x[0]===decodeURIComponent(location.hash.substring(9)));
-    if(idx>=0) openService(idx);
+    if(idx>=0){ renderService(idx); return; }
   }
-});
+  showAllServices(true);
+}
+window.addEventListener("popstate",restoreFromUrl);
+window.addEventListener("load",restoreFromUrl);
 
 document.getElementById("year").textContent=new Date().getFullYear();
 function toggleMenu(){document.getElementById("mobileNav").classList.toggle("show")}
