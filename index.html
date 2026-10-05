@@ -42,7 +42,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,
 .insta-top svg{width:19px;height:19px;fill:#fff}
 .hero-slider{position:relative;width:100%;max-width:600px;aspect-ratio:4/3;border-radius:28px;overflow:hidden;background:linear-gradient(160deg,var(--primary),var(--primary2));box-shadow:14px 14px 0 var(--orange),0 30px 50px -20px rgba(59,15,140,.45);margin-right:14px}
 .slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease}.slide.active{opacity:1}
-.slide img{width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in}
+.slide img{width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in}.slide.active{opacity:1;z-index:1}.slide:not(.active){opacity:0;z-index:0}
 .slide-caption{position:absolute;left:0;right:0;bottom:0;padding:18px 20px 36px;background:linear-gradient(0deg,rgba(27,16,51,.85),transparent);color:#fff;font-weight:600;font-size:15px}
 .dots{position:absolute;bottom:13px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:2}
 .dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.55);border:0;padding:0;cursor:pointer;transition:width .25s}.dot.active{background:var(--orange2);width:24px;border-radius:6px}
@@ -580,24 +580,37 @@ document.addEventListener("keydown",e=>{
 
   /* ---------- apply saved changes to the page ---------- */
   function applyHero() {
-    var list = baseHero.filter(function (p) { return hidden.indexOf(p.img) < 0; })
-      .concat(heroX.map(function (p) { return { img: p.img, caption: p.caption }; }));
-    heroPhotos.length = 0; Array.prototype.push.apply(heroPhotos, list);
+    // Admin-added hero photos come first, so the newly added photo is visible immediately.
+    var adminHero = heroX.map(function (p) {
+      return { img: p.img, caption: p.caption || "" };
+    });
+    var builtInHero = baseHero.filter(function (p) {
+      return hidden.indexOf(p.img) < 0;
+    });
+    var list = adminHero.concat(builtInHero);
+
+    heroPhotos.length = 0;
+    Array.prototype.push.apply(heroPhotos, list);
+
     var sl = $("heroSlider"), dots = $("heroDots");
     sl.querySelectorAll(".slide").forEach(function (n) { n.remove(); });
     dots.innerHTML = "";
+
     heroPhotos.forEach(function (p, i) {
       var s = document.createElement("div");
       s.className = "slide" + (i === 0 ? " active" : "");
-      s.innerHTML = '<img src="' + esc(p.img) + '" alt="' + esc(p.caption) + '" loading="lazy" onclick="openLightbox(' + i + ')"><div class="slide-caption">' + esc(p.caption) + "</div>";
+      s.innerHTML = '<img src="' + esc(p.img) + '" alt="' + esc(p.caption) + '" loading="eager" onclick="openLightbox(' + i + ')"><div class="slide-caption">' + esc(p.caption) + "</div>";
       sl.insertBefore(s, dots);
+
       var d = document.createElement("button");
       d.className = "dot" + (i === 0 ? " active" : "");
       d.setAttribute("aria-label", "Show photo " + (i + 1));
       d.onclick = function () { goToSlide(i); resetHeroTimer(); };
       dots.appendChild(d);
     });
+
     heroIndex = 0;
+    resetHeroTimer();
   }
 
   function build() {
