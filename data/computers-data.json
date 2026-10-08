@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "added": [],
+  "edits": {
+    "1": {
+      "name": "Lenovo ThinkPad T480 (Refurbished)",
+      "cat": "laptop",
+      "warranty": "6 months warranty",
+      "price": 18982,
+      "mrp": 100000,
+      "stock": true,
+      "specs": [
+        "Core i5 8th Gen",
+        "8 GB RAM",
+        "256 GB SSD",
+        "14 inch",
+        "Windows 11"
+      ]
+    }
+  }
+}
